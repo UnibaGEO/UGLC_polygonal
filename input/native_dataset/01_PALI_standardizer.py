@@ -9,7 +9,7 @@ root = os.getenv("FILES_REPO")
 
 # COOLR_R-----------------------------------------------------------------------
 # SHP to CSV
-df_orig_r = gpd.read_file(f"{root}/input/download/01_COOLR/COOLR report points/nasa_coolr_reports_point.shp")
+df_orig_r = gpd.read_file(f"{root}/input/download/01_PALI/COOLR  report points/nasa_coolr_reports_point.shp")
 # Crete a GeoDataFrame using 'lon' and 'lat' columns for generating the WKT_GEOM
 gdf_orig_r = gpd.GeoDataFrame(df_orig_r,
                              geometry=gpd.points_from_xy(df_orig_r['longitude'], df_orig_r['latitude']),
