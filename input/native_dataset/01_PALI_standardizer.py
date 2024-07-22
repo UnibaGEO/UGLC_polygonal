@@ -7,7 +7,7 @@ import pandas as pd
 load_dotenv("../../config.env")
 root = os.getenv("FILES_REPO")
 
-# COOLR_R-----------------------------------------------------------------------
+# PALI -----------------------------------------------------------------------
 # SHP to CSV
 import geopandas as gpd
 
