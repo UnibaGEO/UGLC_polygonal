@@ -21,7 +21,7 @@ df_orig = df_orig.to_crs(epsg=4326)
 df_orig['WKT_GEOM'] = df_orig.geometry.apply(lambda geom: geom.wkt)
 
 # Save the GeoDataFrame as a CSV
-df_orig.to_csv(f"{root}/input/download/01_PALI/Ground_Truth_database.csv", index=False)
+df_orig.to_csv(f"{root}/input/download/1_PALI_Patagonian Andes landslides inventory (poly)/Ground_Truth_database.csv", index=False)
 
 #
 # # COOLR_E-----------------------------------------------------------------------
