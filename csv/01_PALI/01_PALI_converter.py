@@ -57,12 +57,12 @@ df_NEW['ACCURACY'] = "0"
 df_NEW['START DATE'] = '2020/01/01'
 df_NEW['END DATE'] = '2021/12/31'
 df_NEW['TYPE'] = 'ND'
-df_NEW['TRIGGER'] = 'Natural'
+df_NEW['TRIGGER'] = 'ND'
 df_NEW['AFFIDABILITY'] = 'CALC'
 df_NEW['RECORD TYPE'] = 'event'
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = "PALI, locality: Patagonia , description: ND "
+df_NEW['NOTES'] = "PALI, locality: Patagonia , description: ND " #METTIAMO INFO SU AREA E PERIMETRO?
 df_NEW['LINK'] = "ND"
 #-----------------------------------------------------------------------------------------------------------------------
 # Corrections
