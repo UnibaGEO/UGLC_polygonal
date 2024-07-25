@@ -12,7 +12,7 @@ import os
 from dotenv import load_dotenv
 from shapely import wkt
 
-# Load the enviroment variables from config.env file
+# Load the enviroment variables from config.env fileE
 load_dotenv("../../config.env")
 root = os.getenv("FILES_REPO")
 
