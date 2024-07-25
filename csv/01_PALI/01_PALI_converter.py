@@ -62,7 +62,7 @@ df_NEW['AFFIDABILITY'] = 'CALC'
 df_NEW['RECORD TYPE'] = 'event'
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = "PALI, locality: Patagonia , description: ND " #METTIAMO INFO SU AREA E PERIMETRO?
+df_NEW['NOTES'] = df_OLD.apply(lambda row: f"PALI, locality: Patagonia, description: ND,area: {repr(row['AREA'])},perimeter:{repr(row['PERIMETER'])},volume: ND", axis=1)
 df_NEW['LINK'] = "ND"
 #-----------------------------------------------------------------------------------------------------------------------
 # Corrections
