@@ -12,9 +12,21 @@ import os
 from dotenv import load_dotenv
 from shapely import wkt
 
-# Load the enviroment variables from config.env fileE
+# Enviroment loading from config.env file -----------------------------------------------------------------------
+
 load_dotenv("../../config.env")
-root = os.getenv("FILES_REPO")
+files_repo = os.getenv("FILES_REPO")
+files_repo_linux = os.getenv("FILES_REPO_LINUX")
+
+# Verify if its there is a Windows G-Drive files repo or a Linux G-Drive files repo
+if os.path.exists(files_repo):
+    root = files_repo
+else:
+    root = files_repo_linux
+
+print(f"Using root= {root}")
+
+# -----------------------------------------------------------------------
 
 # Native Dataframe 01_COOLR_native loading
 df_OLD = pd.read_csv(f"{root}/input/native_dataset/01_PALI_native.csv", low_memory=False, encoding="utf-8")
