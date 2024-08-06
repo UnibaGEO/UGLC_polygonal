@@ -1,6 +1,6 @@
+from dotenv import load_dotenv
 import os
 import geopandas as gpd
-from dotenv import load_dotenv
 
 # Enviroment loading from config.env file -----------------------------------------------------------------------
 
@@ -21,19 +21,20 @@ print(f"Using root= {root}")
 # MAL -----------------------------------------------------------------------
 # SHP to CSV
 
-# Leggi il file SHP
+# Read the SHP file
 df_orig = gpd.read_file(f"{root}/input/download/2_MAL/Sabah_zenodo/12_MAL.shp")
 
-# Assicurati che il CRS sia EPSG:4326
+# set the CRS as EPSG:4326
 df_orig = df_orig.to_crs(epsg=4326)
 
-# Genera il WKT_GEOM per i poligoni
+# Generate the WKT_GEOM for the polygons
 df_orig['WKT_GEOM'] = df_orig.geometry.apply(lambda geom: geom.wkt)
-# Seleziona tutte le colonne tranne 'geometry'
+
+# Select all columns except for 'geometry'
 columns_to_save = [col for col in df_orig.columns if col != 'geometry']
 
-# Crea un nuovo DataFrame con le colonne selezionate
+# Create a new DataFrame with the selected columns
 df_final = df_orig[columns_to_save]
 
-# Salva il DataFrame come CSV
+# Save the DataFrame as CSV
 df_final.to_csv(f"{root}/input/native_dataset/02_MAL_native.csv", index=False)
