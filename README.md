@@ -8,13 +8,12 @@
                                                         IN PROGRESS
 ----------------------------------------------------------------------------------------------------------------
 
-TEST1
 
 ## :red_circle: Authors
 
 ----------------------------------------------------------------------------------------------------------------
 - [@Saverio Mancino](https://github.com/RavyHollow) - PhD Student (University of Bari - Dept. Geo-enviromental science).
-- [@Anna Sblano](https://github.com/Anita2333) - Researcher (University of Bari - Dept. Geo-enviromental science).
+- [@Anna Sblano](https://github.com/Anita2333) - Research fellow (University of Bari - Dept. Geo-enviromental science).
 - [@Francesco Paolo Lovergine](https://github.com/fpl) - PhD Researcher (National Research Council of Italy - IREA).
 - [@Giuseppe Amatulli](https://github.com/selvaje) - PhD Researcher (Yale University - CRC).
 - Domenico Capolongo - PhD Professor (University of Bari - Dept. Geo-enviromental science).
@@ -82,9 +81,11 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
     |POLYGONAL DATASET|
     |-----------------|
   
-    | REFERING                                                                                                                                            | NAME                                                                                           | N° POLYGONS | LICENSE                                                                                                             | DOWNLOAD  | IMPLEMENTED              |
-    |-----------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------|-----------|--------------------------|
-
+    | REFERING                                      | NAME                                                                                 | N° POLYGONS | LICENSE                                                            | DOWNLOAD  | IMPLEMENTED           |
+    |-----------------------------------------------|--------------------------------------------------------------------------------------|-------------|--------------------------------------------------------------------|-----------|-----------------------|
+    | [01_PALI](https://zenodo.org/records/7057656) | Patagonian Andes Landslide Inventory (Morales et al., 2022)                          | 10026       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | free      | :heavy_check_mark:    |
+    | [02_MAL](https://zenodo.org/records/6107187)  | Sabah (Malaysia)Landslides triggered by the 2015 6.0 Mw earthquake                   | 5198        | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | free      | :heavy_check_mark:    |
+    | [03_PH](https://zenodo.org/records/7520726)   | Cotabato - Davao del Sur (Philippines) Landslides triggered by the 2019 earthquake   | 10593       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | free      | :heavy_check_mark:    |
 
 
 
