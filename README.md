@@ -55,38 +55,15 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 
 - <b> OLD DATASET: </b> the contents of this field represent the name of the native dataset used into the UGLC creation:
 
-    |POINT DATASET|
-    |-------------|
-  
-    | REFERING                                                                                                                                            | NAME                                                                                           | N° POINTS | LICENSE                                                                                                              | DOWNLOAD  | IMPLEMENTED          |
-    |-----------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|-----------|----------------------------------------------------------------------------------------------------------------------|-----------|----------------------|
-    | [01_COOLR](https://maps.nccs.nasa.gov/arcgis/apps/MapAndAppGallery/index.html?appid=574f26408683485799d02e857e5d9521)                               | Cooperative Open Online Landslide Repository (NASA) Event + Report points (with no duplicates) | 49718     | [LICENSE](https://maps.nccs.nasa.gov/arcgis/apps/MapAndAppGallery/index.html?appid=574f26408683485799d02e857e5d9521) | free      | :heavy_check_mark:   |
-    | [02_GFLD](https://nhess.copernicus.org/articles/18/2161/2018/)                                                                                      | Global fatal landslide occurrence from 2004 to 2016                                            | 5490      | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                                                     | free      | :heavy_check_mark:   |
-    | [03_ITALICA](https://zenodo.org/records/8009366)                                                                                                    | ITAlian rainfall-induced LandslIdes CAtalogue (CNR - IRPI)                                     | 6312      | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                                                     | free      | :heavy_check_mark:   |
-    | [04_UAP](https://www.sciencebase.gov/catalog/item/61f326dfd34e622189b93308)                                                                         | Landslide Inventories across the United States version2 (USGS)                                 | 176427    | [LICENSE](https://www.usgs.gov/emergency-operations-portal/copyright-and-data-citation)                              | free      | :heavy_check_mark:   |
-    | [05_ALC](https://oasishub.co/dataset/australia-landslide-catalogue)                                                                                 | Australia Landslide Catalogue                                                                  | 1653      | [LICENSE](https://opendefinition.org/licenses/cc-by/)                                                                | free      | :heavy_check_mark:   |
-    | [06_PCLD](https://doi.org/10.5281/zenodo.10271431)                                                                                                  | Preliminary Canadian Landslide Database                                                        | 8302      | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                                                     | free      | :heavy_check_mark:   |
-    | [07_RBR](https://esurf.copernicus.org/articles/9/445/2021/)                                                                                         | Shallow Landslide Inventory for 2000-2019 (eastern DRC, Rwanda, Burundi)                       | 7945      | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                                                     | free      | :heavy_check_mark:   |
-    | [08_NZK](https://www.designsafe-ci.org/data/browser/public/designsafe.storage.published/PRJ-2765/#details-6410851737832919531-242ac118-0001-012)    | Map of co-seismic Landslides for the 7.8 Kaikoura earthquake, New Zealand                      | 7355      | [LICENSE](https://opendatacommons.org/licenses/by/summary/)                                                          | free      | :heavy_check_mark:   |
-    | [09_CA](https://geohazards.com.co/visor-geohazard.html)                                                                                             | Mass Movements Information System (SIMMA) of the Colombian Geological Service                  | 1065      | [LICENSE]()                                                                                         | free      | :heavy_check_mark:   |
-    | [10_BGS](https://www.bgs.ac.uk/geology-projects/landslides/national-landslide-database/a-guide-to-the-national-landslide-database-on-the-geoindex/) | National Landslide Database - Index data (BGS)                                                 | 15050     | [LICENSE](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)                                | on demand | :heavy_check_mark:   |
-    | [11_NTMI](https://data.gov.ie/dataset/gsi-landslide-events-data)                                                                                    | Landslide Events Data (GSI)                                                                    | 2811      | [LICENSE](https://creativecommons.org/licenses/by/4.0/)                                                              | free      | :heavy_check_mark:   |
-    | [12_VLS](https://anrgeodata.vermont.gov/datasets/landslides/explore?location=43.920513%2C-72.678150%2C8.82)                                         | Vermont Geological Survey's preliminary landslide inventory                                    | 3049      | [LICENSE](https://creativecommons.org/licenses/by/4.0/)                                                              | free      | :heavy_check_mark:   |
-    | [13_SLIDO](https://www.oregon.gov/dogami/slido/Pages/data.aspx)                                                                                     | Statewide Landslide Information Database for Oregon (DOGAMI)                                   | 15866     | [LICENSE](https://creativecommons.org/licenses/by/4.0/)                                                              | free      | :heavy_check_mark:   |
-    | [14_1N](https://www.fdsn.org/networks/detail/1N_2015/)                                                                                              | 1N (2015-2027): French Landslide Observatory – OMIV (Temporary data)                           | 194       | [LICENSE](https://creativecommons.org/licenses/by/4.0/)                                                              | free      | :heavy_check_mark:   |
-    | [15_CAFLAG](https://data.4tu.nl/articles/dataset/CAmpi_Flegrei_LAndslide_Geodatabase_CAFLAG_/14440757)                                              | The CAmpi Flegrei LAndslide Geodatabase                                                        | 2302      | [LICENSE](https://creativecommons.org/licenses/by/4.0/)                                                              | free      | :heavy_check_mark:   |
-    | [16_ETGFI](https://www.sciencebase.gov/catalog/item/583f4114e4b04fc80e3c4a1a)                                                                       | ETGFI - Earthquake-Triggered Ground-Failure Inventories (POINTS) - USGS                        | 115402    | [LICENSE](https://creativecommons.org/licenses/by/4.0/)                                                              | free      | :heavy_check_mark:   |
-    | [17_IFFI](https://idrogeo-isprambiente-it.translate.goog/app/page/open-data?_x_tr_sl=en&_x_tr_tl=it&_x_tr_hl=it&_x_tr_pto=sc&_x_tr_hist=true)                                                                   | IFFI - Inventario fenomeni franosi in Italia (ISPRA)                                | 622447    | [LICENSE](https://creativecommons.org/licenses/by-sa/4.0/legalcode.en)                                                              | free      | :heavy_check_mark:   |
-
     |POLYGONAL DATASET|
     |-----------------|
   
-    | REFERING                                      | NAME                                                                                 | N° POLYGONS | LICENSE                                                            | DOWNLOAD  | IMPLEMENTED           |
-    |-----------------------------------------------|--------------------------------------------------------------------------------------|-------------|--------------------------------------------------------------------|-----------|-----------------------|
-    | [01_PALI](https://zenodo.org/records/7057656) | Patagonian Andes Landslide Inventory (Morales et al., 2022)                          | 10026       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | free      | :heavy_check_mark:    |
-    | [02_MAL](https://zenodo.org/records/6107187)  | Sabah (Malaysia)Landslides triggered by the 2015 6.0 Mw earthquake                   | 5198        | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | free      | :heavy_check_mark:    |
-    | [03_PH](https://zenodo.org/records/7520726)   | Cotabato - Davao del Sur (Philippines) Landslides triggered by the 2019 earthquake   | 10593       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | free      | :heavy_check_mark:    |
-
+    | REFERING                                      | NAME                                                                               | N° POLYGONS | LICENSE                                                            | DOWNLOAD  | IMPLEMENTED           |
+    |-----------------------------------------------|------------------------------------------------------------------------------------|-------------|--------------------------------------------------------------------|-----------|-----------------------|
+    | [01_PALI](https://zenodo.org/records/7057656) | Patagonian Andes Landslide Inventory (Morales et al., 2022)                        | 10026       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | free      | :heavy_check_mark:    |
+    | [02_MAL](https://zenodo.org/records/6107187)  | Sabah (Malaysia)Landslides triggered by the 2015 6.0 Mw earthquake                 | 5198        | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | free      | :heavy_check_mark:    |
+    | [03_PH](https://zenodo.org/records/7520726)   | Cotabato - Davao del Sur (Philippines) Landslides triggered by the 2019 earthquake | 10593       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | free      | :heavy_check_mark:    |
+    | [04_HLD](https://zenodo.org/records/8308313)  | Haiti landslide dataset                                                            | 4178        | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)   | on demand | :heavy_check_mark:    |
 
 
 - <b> OLD ID: </b> the contents of this field represent the identifying id assigned to this row in the source dataset (if any)
@@ -98,7 +75,7 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 - <b> COUNTRY: </b> the content of this field represents the country where the event was located (where missing it was derived using its coordinates
 
 
-- <b> ACCURACY: </b> the content of this field represents the precision in meters of the relative deviation of the georeferenced point from 
+- <b> ACCURACY: </b> the content of this field represents the precision in meters of the relative deviation of the georeferenced polygon from 
     the actual landslide (if there is one), where the NaN values or the spatially uncertain points are represented by the value -99999
 
 
@@ -246,27 +223,21 @@ The GSR contains 5 main folders :
 
 - files
   This folder contains all the files used by this readme file, like pictures and the license.
-  
-All the scripts are managed by the "orchestrator.py" master script in the main folder.
+
 Into the main folder there is also this readme file wich contains all this informations and the pictures of the UGLC 
 dataframe.
 
 --------------------------------------------------------
 ## :red_circle: Requirements
 
-Specificare gli eventuali requisiti hardware o software necessari per eseguire gli script. Ad esempio:
-
-- Python 3.11 o versioni successive
-- Altri moduli o librerie specifici
-
 ----------------------------------------------------------------------------------------------------------------
-                                                        IN PROGRESS
+- Python 3.11
 ----------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------
 ## :red_circle: Installation
 
-Spiegare come installare eventuali dipendenze o configurare l'ambiente di lavoro per eseguire gli script.
+installare eventuali dipendenze o configurare l'ambiente di lavoro per eseguire gli script.
 
 ----------------------------------------------------------------------------------------------------------------
                                                         IN PROGRESS
