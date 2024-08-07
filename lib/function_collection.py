@@ -6,11 +6,22 @@ from shapely.geometry import Point
 from dotenv import load_dotenv
 import os
 import calendar
-from datetime import datetime
 
-# Load the enviroment variables from config.env file
+# Enviroment loading from config.env file -----------------------------------------------------------------------
+
 load_dotenv("../../config.env")
-root = os.getenv("FILES_REPO")
+files_repo = os.getenv("FILES_REPO")
+files_repo_linux = os.getenv("FILES_REPO_LINUX")
+
+# Verify if its there is a Windows G-Drive files repo or a Linux G-Drive files repo
+if os.path.exists(files_repo):
+    root = files_repo
+else:
+    root = files_repo_linux
+
+print(f"Using root= {root}")
+
+# -----------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------------------------------------------------
 #1 ASSIGN COUNTRY ( FROM NODATA, WITHOUT COLUMN)
@@ -740,3 +751,5 @@ def compose_end_date(year, month, day):
             else 1 if day == "ND" and year != 2017 \
             else 1
         return datetime(year_value, month_value, day_value).strftime('%Y/%m/%d')
+
+# -----------------------------------------------------------------------------------------------------------------------
