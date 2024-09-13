@@ -1,0 +1,23 @@
+{
+  "07_UTH LOOKUP TABLES": {
+    "d_name_lookup": {
+      "spread": "earth spreading",
+      "fall": "rock fall",
+      "Debris Flow": "debris flow",
+      "Debris Slide Rotational": "rotational sliding",
+      "Debris Slide Translational": "translational sliding",
+      "Earth Flow": "earth flow",
+      "Earth Slide Rotational": "rotational sliding",
+      "Earth Slide Translational": "translational sliding",
+      "Rock Fall": "rock fall",
+      "Rock Slide Rotatiional": "rock slide",
+      "Rock Slide Translational": "rock slide",
+      "blanks": "ND"
+    },
+    "confidence_lookup": {
+      "High": "0",
+      "Moderate": "100",
+      "Low": "250"
+    }
+  }
+}
