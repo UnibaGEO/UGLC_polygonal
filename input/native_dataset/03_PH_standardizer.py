@@ -66,36 +66,4 @@ df_final = pd.concat([df_final1, df_final2, df_final3])
 output_path = f"{root}/input/native_dataset/03_PH_native.csv"
 df_final.to_csv(output_path, index=False, encoding="utf-8")
 
-### ------------------------------------------------------------
-
-#from shapely import wkt
-
-# Load the final CSV file back into a DataFrame
-#df_final = pd.read_csv(output_path)
-
-# Convert WKT_GEOM to geometries
-#df_final['geometry'] = df_final['WKT_GEOM'].apply(wkt.loads)
-
-# Create a GeoDataFrame
-#gdf = gpd.GeoDataFrame(df_final, geometry='geometry', crs="EPSG:4326")
-
-# Sort by 'START DATE' to give priority to earlier dates
-#gdf = gdf.sort_values('START DATE')
-
-# Create an empty GeoDataFrame to store the final non-overlapping polygons
-#gdf_non_overlapping = gpd.GeoDataFrame(columns=gdf.columns, crs=gdf.crs)
-
-# Iterate through each polygon and add it to the final GeoDataFrame if it doesn't overlap with existing ones
-#for idx, row in gdf.iterrows():
-    # Check for overlaps
-#    if not gdf_non_overlapping.intersects(row.geometry).any():
-#        gdf_non_overlapping = gdf_non_overlapping._append(row)
-
-# Drop the old geometry column and rename the new one
-#gdf_non_overlapping = gdf_non_overlapping.drop(columns='geometry')
-#gdf_non_overlapping = gdf_non_overlapping.rename(columns={'geometry': 'WKT_GEOM'})
-
-# Save the final non-overlapping DataFrame to a new CSV file
-#output_path_non_overlapping = f"{root}/input/native_dataset/03_PH_native_non_overlapping.csv"
-#gdf_non_overlapping.to_csv(output_path_non_overlapping, index=False, encoding="utf-8")
 

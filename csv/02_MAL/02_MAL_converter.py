@@ -63,8 +63,8 @@ df_NEW['ID'] = "CALC"
 df_NEW['OLD DATASET'] = "Malesian Earthquake induced landslides"
 df_NEW['OLD ID'] = df_OLD['Id']
 df_NEW['VERSION'] = str("V1")
-df_NEW['COUNTRY'] = "Malesia"
-df_NEW['ACCURACY'] = "0"
+df_NEW['COUNTRY'] = "Malaysia"
+df_NEW['ACCURACY'] = str("0")
 df_NEW['START DATE'] = "2008/12/31"
 df_NEW['END DATE'] = "2016/03/21"
 df_NEW['TYPE'] = "ND"
@@ -73,7 +73,7 @@ df_NEW['AFFIDABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = "event"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = df_OLD.apply(lambda row: f"MAL, locality: Malesia, description: ND,area: {repr(row['area'])},perimeter: ND,volume: {repr(row['vol_xu'])}", axis=1)
+df_NEW['NOTES'] = df_OLD.apply(lambda row: f"MAL, locality: Malaysia, description: ND,area: {repr(row['area'])},perimeter: ND,volume: {repr(row['vol_xu'])}", axis=1)
 df_NEW['LINK'] = "Source: ND"
 
 # Corrections

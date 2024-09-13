@@ -2,46 +2,53 @@ from dotenv import load_dotenv
 import os
 import geopandas as gpd
 import pandas as pd
-import numpy as np
 
-# Load the environment variables from config.env file
+# Enviroment loading from config.env file -----------------------------------------------------------------------
+
 load_dotenv("../../config.env")
-root = os.getenv("FILES_REPO")
+files_repo = os.getenv("FILES_REPO")
+files_repo_linux = os.getenv("FILES_REPO_LINUX")
 
-# Load the CSV
-df_orig = pd.read_csv(f"{root}/input/download/06_PCLD/Canadian_landslide_database_Dec2023_version7.csv", sep=',', low_memory= False, encoding="utf-8")
+# Verify if its there is a Windows G-Drive files repo or a Linux G-Drive files repo
+if os.path.exists(files_repo):
+    root = files_repo
+else:
+    root = files_repo_linux
 
-df_orig['longitude'] = pd.to_numeric(df_orig['Longitude'], errors='coerce')
-df_orig['latitude'] = pd.to_numeric(df_orig['Latitude'], errors='coerce')
-df_orig = df_orig.dropna(subset=['latitude', 'longitude'])
+print(f"Using root= {root}")
 
-# Crea un GeoDataFrame usando 'lon' e 'lat' colonne per generare il WKT_GEOM
-gdf_orig = gpd.GeoDataFrame(df_orig,
-                             geometry=gpd.points_from_xy(df_orig['longitude'], df_orig['latitude']),
-                             crs='EPSG:4326')  # Set the CRS as EPSG:4326
-gdf_orig['WKT_GEOM'] = gdf_orig.geometry.apply(lambda geom: geom.wkt)
+# -----------------------------------------------------------------------
 
-# Standardizing Trigger Data
-gdf_orig['Trigger'].fillna(gdf_orig['Contributor'], inplace=True)
-gdf_orig['Trigger'] = gdf_orig['Trigger'].replace(' ', 'ND')
-gdf_orig['Trigger'].fillna('ND', inplace=True)
+# GEUS_DN -----------------------------------------------------------------------
+# SHP to CSV
 
-# Standardizing Type Data
-gdf_orig['Type'] = gdf_orig['Type'].fillna('ND')
+# Read the SHP file
+df_orig = gpd.read_file(f"{root}/input/download/6_DANIMARCA/DK_LI_220309/DK_LI_220309/DK_LI_220307.shp")
 
-# Creating  the DATAs and DATAf fields replacing the NaN with the oldest (except for pre 0000 dates) date and the most recent
-gdf_orig['DATEs'] = (gdf_orig['Timing'].fillna('1677/12/31')).astype(str)
-gdf_orig['DATEf'] = (gdf_orig['Timing'].fillna('2023/12/31')).astype(str)
 
-# Merging the Name and Study area content, removing the NaN values
-gdf_orig['Name'] = gdf_orig['Name'].fillna('ND')
-gdf_orig['Study area'] = gdf_orig['Study area'].fillna('ND')
-gdf_orig['Info'] = gdf_orig.apply(lambda row: f"{row['Study area']}, {row['Name']}", axis=1)
+# Set the CRS as EPSG:4326
+df_orig = df_orig.to_crs(epsg=4326)
 
-#standardize ACCURACY field content
-gdf_orig['Accuracy'] = gdf_orig['Location confidence']
-gdf_orig['Accuracy'] = gdf_orig.apply(lambda row: row['Reference'] if pd.isnull(row['Accuracy']) else row['Accuracy'], axis=1)
-gdf_orig['Accuracy'] = gdf_orig['Accuracy'].fillna('30')
 
-# Salva il GeoDataFrame come CSV
-gdf_orig.to_csv(f"{root}/input/native_datasets/06_PCLD_native.csv", index=False)
+# Generate the WKT_GEOM for the polygons
+df_orig['WKT_GEOM'] = df_orig.geometry.apply(lambda geom: geom.wkt)
+
+
+# Select all columns except for 'geometry'
+columns_to_save = [col for col in df_orig.columns if col != 'geometry']
+
+
+# Create a new DataFrame with the selected columns
+df_final = df_orig[columns_to_save]
+
+
+# Add 'START DATE' and 'END DATE' columns
+df_final['START DATE'] = '01/01/2014'
+df_final['END DATE'] = '31/12/2020'
+
+
+# Save the final DataFrame to a CSV file
+output_path = f"{root}/input/native_dataset/06_GEUS_DN_native.csv"
+df_final.to_csv(output_path, index=False, encoding="utf-8")
+
+### ------------------------------------------------------------

@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 #                                              UGLC DATAFRAME CONVERTER
 #-----------------------------------------------------------------------------------------------------------------------
-# native dataframe:     PCLD - Preliminary Canadian Landslide Database, Brideau Marc-Andre, Brayshaw Drew, Lipovsky Panya
+# native dataframe:     GEUS national landslide inventory for Denmark - Luetzenburg G. et al. 2022
 #-----------------------------------------------------------------------------------------------------------------------
 # Conversion
 #-----------------------------------------------------------------------------------------------------------------------
@@ -9,14 +9,26 @@ import pandas as pd
 import json
 import os
 from dotenv import load_dotenv
-from lib.function_collection import date_f_correction, date_s_correction, apply_affidability_calculator
+from lib.function_collection import apply_affidability_calculator
 
-# Load the enviroment variables from config.env file
+# Enviroment loading from config.env file -----------------------------------------------------------------------
+
 load_dotenv("../../config.env")
-root = os.getenv("FILES_REPO")
+files_repo = os.getenv("FILES_REPO")
+files_repo_linux = os.getenv("FILES_REPO_LINUX")
+
+# Verify if its there is a Windows G-Drive files repo or a Linux G-Drive files repo
+if os.path.exists(files_repo):
+    root = files_repo
+else:
+    root = files_repo_linux
+
+print(f"Using root= {root}")
+
+# -----------------------------------------------------------------------
 
 # Native Dataframe 01_COOLR_native loading
-df_OLD = pd.read_csv(f"{root}/input/native_datasets/06_PCLD_native.csv", low_memory=False, encoding="utf-8")
+df_OLD = pd.read_csv(f"{root}/input/native_dataset/06_GEUS_DN_native.csv", low_memory=False, encoding="utf-8")
 
 # JSON Lookup Tables Loading
 with open('06_GEUS_DN_lookuptables.json', 'r', encoding="utf-8") as file:
@@ -66,22 +78,22 @@ df_NEW = pd.DataFrame(new_data)
 # New Dataframe Updating with the Old Dataframe columns content values
 df_NEW['WKT_GEOM'] = df_OLD['WKT_GEOM']
 df_NEW['NEW DATASET'] = "UGLC"
-df_NEW['ID'] = "CALC"# range(1, len(df_OLD) + 1)
-df_NEW['OLD DATASET'] = "Preliminary Canadian Landslide Database v.6.1 - Brideau et al. 2023"
-df_NEW['OLD ID'] = df_OLD['LS_ID']
-df_NEW['VERSION'] = str("V6.1")
-df_NEW['COUNTRY'] = "Canada"
-df_NEW['ACCURACY'] = df_OLD['Accuracy']
-df_NEW['START DATE'] = df_OLD['DATEs'].apply(lambda x: pd.to_datetime(x, errors='coerce').strftime('%Y/%m/%d'))
-df_NEW['END DATE'] = df_OLD['DATEf'].apply(lambda x: pd.to_datetime(x, errors='coerce').strftime('%Y/%m/%d'))
+df_NEW['ID'] = "CALC"
+df_NEW['OLD DATASET'] = "GEUS national landslide inventory for Denmark - Luetzenburg G. et al. 2022"
+df_NEW['OLD ID'] = df_OLD['id']
+df_NEW['VERSION'] = "11/07/2022"
+df_NEW['COUNTRY'] = "Denmark"
+df_NEW['ACCURACY'] = str("0")
+df_NEW['START DATE'] = df_OLD['START DATE']
+df_NEW['END DATE'] = df_OLD['END DATE']
 df_NEW['TYPE'] = df_OLD['Type']
-df_NEW['TRIGGER'] = df_OLD['Trigger']
+df_NEW['TRIGGER'] = "ND"
 df_NEW['AFFIDABILITY'] = "CALC"
-df_NEW['RECORD TYPE'] = df_OLD['Trigger'].apply(lambda x: 'report' if x == 'natural' else 'event')
+df_NEW['RECORD TYPE'] = "report"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = df_OLD.apply(lambda row: f"PCLD - locality: Canada - description: {repr(row['Info'])}", axis=1)
-df_NEW['LINK'] = df_OLD.apply(lambda row: f"Source: {row['Reference']}", axis=1)
+df_NEW['NOTES'] = df_NEW.apply(lambda row:f"GEUS_DN -locality:{row['COUNTRY']}", axis=1) + df_OLD.apply(lambda row:f", description: {row['Coast_land']}, area: {row['Area']}, perimeter: {row['Perimeter']}, volume: ND", axis=1)
+df_NEW['LINK'] = "Source: ND"
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Corrections
@@ -95,8 +107,8 @@ apply_affidability_calculator(df_NEW)
 #-----------------------------------------------------------------------------------------------------------------------
 
 # Creation of the new updated Dataframe as a .csv file in the selected directory
-df_NEW.to_csv(f"{root}/output/converted_csv/06_PCLD_converted.csv", sep=',', index=False, encoding="utf-8")
+df_NEW.to_csv(f"{root}/output/converted_csv/06_GEUS_DN_converted.csv", sep=',', index=False, encoding="utf-8")
 
 print("__________________________________________________________________________________________")
-print("                             06_PCLD_native conversion: DONE                              ")
+print("                             06_GEUS_DN_native conversion: DONE                           ")
 print("__________________________________________________________________________________________")
