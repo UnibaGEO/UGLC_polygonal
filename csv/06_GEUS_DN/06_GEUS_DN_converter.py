@@ -19,9 +19,9 @@ root = os.getenv("FILES_REPO")
 df_OLD = pd.read_csv(f"{root}/input/native_datasets/06_PCLD_native.csv", low_memory=False, encoding="utf-8")
 
 # JSON Lookup Tables Loading
-with open('06_PCLD_lookuptables.json', 'r', encoding="utf-8") as file:
+with open('06_GEUS_DN_lookuptables.json', 'r', encoding="utf-8") as file:
     lookup_config = json.load(file)
-    lookup_tables = lookup_config["06_PCLD LOOKUP TABLES"]
+    lookup_tables = lookup_config["06_GEUS_DN LOOKUP TABLES"]
 
 # Application of lookup Tables to the columns of the old DataFrame
 for column in df_OLD.columns:
