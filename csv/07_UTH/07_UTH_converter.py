@@ -1,28 +1,40 @@
 #-----------------------------------------------------------------------------------------------------------------------
 #                                              UGLC DATAFRAME CONVERTER
 #-----------------------------------------------------------------------------------------------------------------------
-# native dataframe:     RBR - Shallow Landslide Inventory for 2000-2019 (eastern DRC, Rwanda, Burundi), Arthur Depicker, Gerard Govers, et al.
+# native dataframe:     UTH - Utah Landslide Inventory Polygons (USG)
 #-----------------------------------------------------------------------------------------------------------------------
 # Conversion
 #-----------------------------------------------------------------------------------------------------------------------
-import numpy as np
 import pandas as pd
 import json
 import os
 from dotenv import load_dotenv
-from lib.function_collection import apply_affidability_calculator, trasforma_data_end, trasforma_data_start, assign_country_to_points
+from lib.function_collection import apply_affidability_calculator, populate_start_date, populate_end_date
 
-# Load the enviroment variables from config.env file
+# Enviroment loading from config.env file -----------------------------------------------------------------------
+
 load_dotenv("../../config.env")
-root = os.getenv("FILES_REPO")
+files_repo = os.getenv("FILES_REPO")
+files_repo_linux = os.getenv("FILES_REPO_LINUX")
+
+# Verify if its there is a Windows G-Drive files repo or a Linux G-Drive files repo
+if os.path.exists(files_repo):
+    root = files_repo
+else:
+    root = files_repo_linux
+
+print(f"Using root= {root}")
+
+# -----------------------------------------------------------------------
 
 # Native Dataframe 01_COOLR_native loading
-df_OLD = pd.read_csv(f"{root}/input/native_datasets/07_RBR_native.csv", low_memory=False,encoding="utf-8")
+df_OLD = pd.read_csv(f"{root}/input/native_dataset/07_UTH_native.csv", sep='|', low_memory=False, encoding="utf-8")
+
 
 # JSON Lookup Tables Loading
-with open('07_RBR_lookuptables.json', 'r', encoding="utf-8") as file:
+with open('07_UTH_lookuptables.json', 'r', encoding="utf-8") as file:
     lookup_config = json.load(file)
-    lookup_tables = lookup_config["07_RBR LOOKUP TABLES"]
+    lookup_tables = lookup_config["07_UTH LOOKUP TABLES"]
 
 # Application of lookup Tables to the columns of the old DataFrame
 for column in df_OLD.columns:
@@ -39,7 +51,6 @@ for column in df_OLD.columns:
             # Update just the no-"ND" columns
             df_OLD[column] = df_OLD[column].map(lambda x: lookup_table.get(str(x), x))
 
-df_OLD['Year'] = df_OLD['Year'].astype(str)
 
 # New dataframe Configuration
 new_data = {
@@ -70,21 +81,21 @@ df_NEW = pd.DataFrame(new_data)
 df_NEW['WKT_GEOM'] = df_OLD['WKT_GEOM']
 df_NEW['NEW DATASET'] = "UGLC"
 df_NEW['ID'] = "CALC"
-df_NEW['OLD DATASET'] = "Shallow Landslide Inventory for 2000-2019 (eastern DRC, Rwanda, Burundi)"
-df_NEW['OLD ID'] = df_OLD['ID']
-df_NEW['VERSION'] = str("Version v1.0")
-df_NEW['COUNTRY'] = assign_country_to_points(df_OLD)['NAME'].replace('Dem. Rep. Congo', 'Democratic Republic of Congo')
-df_NEW['ACCURACY'] = (np.sqrt(df_OLD['area'].astype(float) / np.pi)).apply(round).astype(int)
-df_NEW['START DATE'] = df_OLD['Year'].apply(trasforma_data_start)
-df_NEW['END DATE'] = df_OLD['Year'].apply(trasforma_data_end)
-df_NEW['TYPE'] = "ND"
-df_NEW['TRIGGER'] = "deforestation"
+df_NEW['OLD DATASET'] = " UTH - Utah Landslide Inventory Polygons (USG)"
+df_NEW['OLD ID'] = "ND"
+df_NEW['VERSION'] = str("version 14/10/2022")
+df_NEW['COUNTRY'] = "Utah"
+df_NEW['ACCURACY'] = df_OLD["confidence"]
+df_NEW['START DATE'] = df_OLD.apply(populate_start_date, axis=1)
+df_NEW['END DATE'] = df_OLD.apply(populate_end_date, axis=1)
+df_NEW['TYPE'] = df_OLD["d_name"]
+df_NEW['TRIGGER'] = "ND"
 df_NEW['AFFIDABILITY'] = "CALC"
-df_NEW['RECORD TYPE'] = "event"
+df_NEW['RECORD TYPE'] = "report"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = df_NEW.apply(lambda row:f"RBR - locality: {repr(row['COUNTRY'])} - description: ND ",axis=1)
-df_NEW['LINK'] ="Source: ND"
+df_NEW['NOTES'] = df_NEW.apply(lambda row: f"UTH -locality:{row['COUNTRY']}", axis=1) + df_OLD.apply(lambda row: f", description: {row['activity']} movement. {row['comments']} Thickness: {row['d_thicknes']}, area: ND , perimeter: ND, volume: ND", axis=1)
+df_NEW['LINK'] = "Source: ND"
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Corrections
@@ -97,9 +108,9 @@ apply_affidability_calculator(df_NEW)
 #-----------------------------------------------------------------------------------------------------------------------
 
 # Creation of the new updated Dataframe as a .csv file in the selected directory
-df_NEW.to_csv(f"{root}/output/converted_csv/07_RBR_converted.csv", sep=',', index=False,encoding="utf-8")
+df_NEW.to_csv(f"{root}/output/converted_csv/07_UTH_converted.csv", sep=',', index=False,encoding="utf-8")
 
 print("__________________________________________________________________________________________")
-print("                             07_RBR_native conversion: DONE                               ")
+print("                             07_UTH_native conversion: DONE                               ")
 print("__________________________________________________________________________________________")
 #--------------------------------------------------------------------------------------------------------------------
