@@ -92,7 +92,7 @@ df_NEW['AFFIDABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = "report"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = df_NEW.apply(lambda row:f"GEUS_DN -locality:{row['COUNTRY']}", axis=1) + df_OLD.apply(lambda row:f", description: {row['Coast_land']}, area: {row['Area']}, perimeter: {row['Perimeter']}, volume: ND", axis=1)
+df_NEW['NOTES'] = df_NEW.apply(lambda row:f"GEUS_DN - locality:{row['COUNTRY']}", axis=1) + df_OLD.apply(lambda row:f", description: {row['Coast_land']}, area: {row['Area']}, perimeter: {row['Perimeter']}, volume: ND", axis=1)
 df_NEW['LINK'] = "Source: ND"
 
 #-----------------------------------------------------------------------------------------------------------------------
