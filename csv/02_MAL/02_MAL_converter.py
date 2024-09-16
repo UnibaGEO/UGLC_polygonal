@@ -73,7 +73,7 @@ df_NEW['AFFIDABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = "event"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = df_OLD.apply(lambda row: f"MAL, locality: Malaysia, description: ND,area: {repr(row['area'])},perimeter: ND,volume: {repr(row['vol_xu'])}", axis=1)
+df_NEW['NOTES'] = df_OLD.apply(lambda row: f"MAL - locality: Malaysia, description: ND,area: {repr(row['area'])},perimeter: ND,volume: {repr(row['vol_xu'])}", axis=1)
 df_NEW['LINK'] = "Source: ND"
 
 # Corrections
