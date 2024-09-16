@@ -34,10 +34,26 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 
 ## :red_circle: Attribute fields summary
 
-|        | WKT_GEOM         | NEW DATASET | ID       | OLD DATASET | OLD ID | VERSION  | COUNTRY  | ACCURACY | START DATE | END DATE | TYPE    | TRIGGER | AFFIDABILITY | RPSV     | DPCM     | FATALITIES | INJURIES | NOTES  | LINK   |
-|--------|------------------|-------------|----------|-------------|--------|----------|----------|----------|------------|----------|---------|---------|--------------|----------|----------|------------|----------|--------|--------|
-| TYPE   | Well known text  | String      | Int      | String      | String | String   | String   | Int      | Date       | Date     | String  | String  | Int          | Bool     | Bool     | Int        | Int      | String | String |
-| STATUS | active           | Active      | Inactive | Active      | Active | Active   | Active   | Active   | Active     | Active   | Active  | Active  | Active       | Inactive | inactive | Active     | Active   | Active | Active |
+| ATTRIBUTE    | TYPE            |
+|--------------|-----------------|
+| WKT_GEOM     | Well known text |
+| NEW DATASET  | String          |
+| ID           | Int             |
+| OLD DATASET  | String          |
+| OLD ID       | String          |
+| VERSION      | String          |
+| COUNTRY      | String          |
+| ACCURACY     | Int             |
+| START DATE   | Date            |
+| END DATE     | Date            |
+| TYPE         | String          |
+| TRIGGER      | String          |
+| AFFIDABILITY | Int             |
+| RECORD TYPE  | String          |
+| FATALITIES   | Int             |
+| INJURIES     | Int             |
+| NOTES        | String          |
+| LINK         | String          |
 
 ----------------------------------------------------------------------------------------------------------------
 
@@ -55,9 +71,9 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 
 - <b> OLD DATASET: </b> the contents of this field represent the name of the native dataset used into the UGLC creation:
 
-    |POLYGONAL DATASET|
-    |-----------------|
-  
+    | POLYGONAL DATASET |
+    |-------------------|
+
     | REFERING                                                                                                                                                                                | NAME                                                                               | N° POLYGONS | LICENSE                                                                               | DOWNLOAD  | IMPLEMENTED           |
     |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------------------|-----------|-----------------------|
     | [01_PALI](https://zenodo.org/records/7057656)                                                                                                                                           | Patagonian Andes Landslide Inventory (Morales et al., 2022)                        | 10026       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
