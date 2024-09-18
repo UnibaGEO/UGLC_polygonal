@@ -24,14 +24,19 @@ print(f"Using root= {root}")
 
 # event polygons
 # Read the SHP file
-df_orig_e = gpd.read_file(f"{root}/input/download/9_Cooperative Open Online Landslide Repository (COOLR)\POLY\poly_nasa_coolr_events\\nasa_coolr_events_poly.shp", sep=';')
+df_orig_e = gpd.read_file(f"{root}/input/download/9_Cooperative Open Online Landslide Repository (COOLR)\POLY\poly_nasa_coolr_events\\nasa_coolr_events_poly.shp", sep='|')
 
 # Set the CRS as EPSG:4326
 df_orig_e = df_orig_e.to_crs(epsg=4326)
 
 # Generate the WKT_GEOM for the polygons
 df_orig_e['WKT_GEOM'] = df_orig_e.geometry.apply(lambda geom: geom.wkt)
-#df_orig_e[''].fillna('ND', inplace=True)
+df_orig_e['START DATE'] ='1897/01/01'
+df_orig_e['END DATE'] = '2023/12/31'
+df_orig_e['ev_title'].fillna('ND', inplace=True)
+df_orig_e['ev_desc'].fillna(' ', inplace=True)
+df_orig_e['shape_Leng'].fillna('ND', inplace=True)
+df_orig_e['shape_Area'].fillna('ND', inplace=True)
 df_orig_e['RECORD TYPE'] = 'event'
 
 # Select all columns except for 'geometry'
@@ -50,7 +55,12 @@ df_orig_r = df_orig_r.to_crs(epsg=4326)
 
 # Generate the WKT_GEOM for the polygons
 df_orig_r['WKT_GEOM'] = df_orig_r.geometry.apply(lambda geom: geom.wkt)
-#df_orig_r[''].fillna('ND', inplace=True)
+df_orig_r['START DATE'] ='1897/01/01'
+df_orig_r['END DATE'] = '2023/12/31'
+df_orig_r['ev_title'].fillna('ND', inplace=True)
+df_orig_r['ev_desc'].fillna(' ', inplace=True)
+df_orig_r['shape_Leng'].fillna('ND', inplace=True)
+df_orig_r['shape_Area'].fillna('ND', inplace=True)
 df_orig_r['RECORD TYPE'] = 'report'
 
 # Select all columns except for 'geometry'

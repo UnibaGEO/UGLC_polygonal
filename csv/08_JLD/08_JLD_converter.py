@@ -6,7 +6,6 @@
 # Conversion
 #-----------------------------------------------------------------------------------------------------------------------
 import pandas as pd
-import json
 import os
 from dotenv import load_dotenv
 from lib.function_collection import apply_affidability_calculator

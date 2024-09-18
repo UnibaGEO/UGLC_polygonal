@@ -1,7 +1,7 @@
 {
   "09_CA LOOKUP TABLES": {
-    "Incertidumb_lookup" :{
-      "High": "0",
+    "ev_id_lookup" :{
+      "0": "0",
       "Mid": "1000",
       "mid": "1000",
       "Low": "-99999"
