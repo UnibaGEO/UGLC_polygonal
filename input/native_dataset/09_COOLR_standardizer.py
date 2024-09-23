@@ -31,7 +31,7 @@ df_orig_e = df_orig_e.to_crs(epsg=4326)
 
 # Generate the WKT_GEOM for the polygons
 df_orig_e['WKT_GEOM'] = df_orig_e.geometry.apply(lambda geom: geom.wkt)
-df_orig_e['START DATE'] ='1897/01/01'
+df_orig_e['START DATE'] = '1897/01/01'
 df_orig_e['END DATE'] = '2023/12/31'
 df_orig_e['ev_title'].fillna('ND', inplace=True)
 df_orig_e['ev_desc'].fillna(' ', inplace=True)
@@ -55,12 +55,13 @@ df_orig_r = df_orig_r.to_crs(epsg=4326)
 
 # Generate the WKT_GEOM for the polygons
 df_orig_r['WKT_GEOM'] = df_orig_r.geometry.apply(lambda geom: geom.wkt)
-df_orig_r['START DATE'] ='1897/01/01'
+df_orig_r['START DATE'] = '1897/01/01'
 df_orig_r['END DATE'] = '2023/12/31'
 df_orig_r['ev_title'].fillna('ND', inplace=True)
 df_orig_r['ev_desc'].fillna(' ', inplace=True)
 df_orig_r['shape_Leng'].fillna('ND', inplace=True)
 df_orig_r['shape_Area'].fillna('ND', inplace=True)
+df_orig_r['loc_acc'].fillna('-99999', inplace=True)
 df_orig_r['RECORD TYPE'] = 'report'
 
 # Select all columns except for 'geometry'

@@ -28,7 +28,7 @@ print(f"Using root= {root}")
 # -----------------------------------------------------------------------
 
 # Native Dataframe 01_COOLR_native loading
-df_OLD = pd.read_csv(f"{root}/input/native_dataset/09_COOLR_native.csv", low_memory=False, encoding="utf-8")
+df_OLD = pd.read_csv(f"{root}/input/native_dataset/09_COOLR_native.csv", sep="|", low_memory=False, encoding="utf-8")
 
 # JSON Lookup Tables Loading
 with open('09_COOLR_lookuptables.json', 'r', encoding="utf-8") as file:
@@ -84,15 +84,15 @@ df_NEW['OLD DATASET'] = "Cooperative Open Online Landslide Repository (NASA) - r
 df_NEW['OLD ID'] = df_OLD['ev_id']
 df_NEW['VERSION'] = str("2019")
 df_NEW['COUNTRY'] = df_OLD['ctry_name'] #DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['ACCURACY'] = df_OLD['loc_acc'] #DA CONTROLLARE CON LOOKUP TABLE
+df_NEW['ACCURACY'] = df_OLD['loc_acc'].fillna('-99999', inplace=True) #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['START DATE'] = df_OLD['ev_date'].combine_first(df_OLD['START DATE']) #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['END DATE'] = df_OLD['ev_date'].combine_first(df_OLD['END DATE']) #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['TYPE'] = df_OLD['ls_cat'] #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['TRIGGER'] = df_OLD['ls_trig'] #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['AFFIDABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = df_OLD['RECORD TYPE']
-df_NEW['FATALITIES'] = df_OLD['fatalities'].astype(int) #DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['INJURIES'] = df_OLD['injuries'].astype(int) #DA CONTROLLARE CON LOOKUP TABLE
+df_NEW['FATALITIES'] = df_OLD['fatalities'] #DA CONTROLLARE CON LOOKUP TABLE
+df_NEW['INJURIES'] = df_OLD['injuries'] #DA CONTROLLARE CON LOOKUP TABLE
 #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['NOTES'] = df_NEW.apply(lambda row: f"COOLR - locality:{row['COUNTRY']}", axis=1) + df_OLD.apply(lambda row: f", description: {row['ev_title']} {row['ev_desc']}, area: {row['shape_Area']}, perimeter: {row['shape_Leng']}, volume: ND", axis=1)
 #DA CONTROLLARE CON LOOKUP TABLE
