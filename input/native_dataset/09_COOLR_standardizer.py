@@ -38,6 +38,8 @@ df_orig_e['ev_desc'].fillna(' ', inplace=True)
 df_orig_e['shape_Leng'].fillna('ND', inplace=True)
 df_orig_e['shape_Area'].fillna('ND', inplace=True)
 df_orig_e['RECORD TYPE'] = 'event'
+df_orig_e['loc_acc'] = "-99999"
+df_orig_e['ev_date'] = pd.to_datetime(df_orig_e['ev_date'], errors='coerce').dt.strftime('%Y/%m/%d')
 
 # Select all columns except for 'geometry'
 e_columns_to_save = [col for col in df_orig_e.columns if col != 'geometry']
@@ -63,6 +65,7 @@ df_orig_r['shape_Leng'].fillna('ND', inplace=True)
 df_orig_r['shape_Area'].fillna('ND', inplace=True)
 df_orig_r['loc_acc'].fillna('-99999', inplace=True)
 df_orig_r['RECORD TYPE'] = 'report'
+df_orig_r['ev_date'] = pd.to_datetime(df_orig_r['ev_date'], errors='coerce').dt.strftime('%Y/%m/%d')
 
 # Select all columns except for 'geometry'
 r_columns_to_save = [col for col in df_orig_r.columns if col != 'geometry']

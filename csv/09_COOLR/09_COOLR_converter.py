@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 #                                              UGLC DATAFRAME CONVERTER
 #-----------------------------------------------------------------------------------------------------------------------
-# native dataframe:     CA - Colombia Landslides Dataset for the Capa Descargada area, Aristizábal E, Sánchez O. 2020
+# native dataframe:     Cooperative Open Online Landslide Repository - Report and Event Polygons (NASA)
 #-----------------------------------------------------------------------------------------------------------------------
 # Conversion
 #-----------------------------------------------------------------------------------------------------------------------
@@ -76,20 +76,6 @@ new_data = {
 # New dataframe Creation
 df_NEW = pd.DataFrame(new_data)
 
-## -------------- TEST--------------
-
-# Lista di elementi univoci nella colonna 'loc_acc'
-elementi_univoci = df_OLD['loc_acc'].unique()
-
-# Stampa degli elementi univoci
-print("Elementi univoci nella colonna 'loc_acc':")
-for elemento in elementi_univoci:
-    print(elemento)
-
-##----------------------------------
-
-
-
 # New Dataframe Updating with the Old Dataframe columns content values
 df_NEW['WKT_GEOM'] = df_OLD['WKT_GEOM']
 df_NEW['NEW DATASET'] = "UGLC"
@@ -97,11 +83,11 @@ df_NEW['ID'] = "CALC"
 df_NEW['OLD DATASET'] = "Cooperative Open Online Landslide Repository (NASA) - report and event polygons"
 df_NEW['OLD ID'] = df_OLD['ev_id']
 df_NEW['VERSION'] = str("2019")
-df_NEW['COUNTRY'] = df_OLD['ctry_name'] #DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['ACCURACY'] = df_OLD['loc_acc'].fillna(9999, inplace=True) #DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['START DATE'] = df_OLD['ev_date'].combine_first(df_OLD['START DATE']) #DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['END DATE'] = df_OLD['ev_date'].combine_first(df_OLD['END DATE']) #DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['TYPE'] = df_OLD['ls_cat'] #DA CONTROLLARE CON LOOKUP TABLE
+df_NEW['COUNTRY'] = df_OLD['ctry_name'].fillna("Haiti")
+df_NEW['ACCURACY'] = df_OLD['loc_acc'].fillna("-99999")
+df_NEW['START DATE'] = df_OLD['ev_date'].combine_first(df_OLD['START DATE'])
+df_NEW['END DATE'] = df_OLD['ev_date'].combine_first(df_OLD['END DATE'])
+df_NEW['TYPE'] = df_OLD['ls_cat']
 df_NEW['TRIGGER'] = df_OLD['ls_trig'] #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['AFFIDABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = df_OLD['RECORD TYPE']
@@ -111,6 +97,15 @@ df_NEW['INJURIES'] = df_OLD['injuries'] #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['NOTES'] = df_NEW.apply(lambda row: f"COOLR - locality:{row['COUNTRY']}", axis=1) + df_OLD.apply(lambda row: f", description: {row['ev_title']} {row['ev_desc']}, area: {row['shape_Area']}, perimeter: {row['shape_Leng']}, volume: ND", axis=1)
 #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['LINK'] = df_OLD.apply(lambda row:f"Source: {row['src_name']} - {row['src_link']}", axis=1)
+
+
+## -------------- TEST--------------
+
+print(df_OLD['ls_cat'].unique())
+print(df_NEW['TYPE'].unique())
+
+##----------------------------------
+
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Corrections

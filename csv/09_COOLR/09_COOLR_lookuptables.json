@@ -7,23 +7,29 @@
       "Low": -99999
     },
     "ls_cat_lookup" :{
-      "UnknownLandslide": "earth slide",
-      "RainfallLandslide": "earth slide",
-      "Other causeLandslide": "earth slide",
-      "UnknownTorrential": "ND",
-      "RainfallTorrential": "earth flow",
-      "Other causeTorrential": "ND",
-      "AnthropogenicLandslide": "earth slide",
-      "UnknownRocks´s fall": "rock fall",
-      "Rainfalllandslide": "earth slide",
-      "RainfallFlood": "ND",
-      "Volcanic ActivityTorrential": "lahar",
-      "EarthquakeLandslide": "earth slide",
-      "AnthropogenicTorrential": "ND",
-      "RainfallDebris flow": "debris flow",
-      "Unknownlandslide": "earth slide",
-      "Volcanic ActivityLandslide": "lahar",
-      "Rainfalltorrential": "earth slide"
+      "complex" : "complex",
+      "creep" : "soil creep",
+      "debris_flow" : "debris flow",
+      "earth_flow" : "earth flow",
+      "Indonesia" : "ND",
+      "lahar" : "lahar",
+      "landslide" : "earth slide",
+      "mudslide" : "mudslide",
+      "other" : "not defined",
+      "Riverbank collapse" : "riverbank collapse",
+      "riverbank_collapse" : "riverbank collapse",
+      "Rock fall" : "rock fall",
+      "Rock slide" : "rock slide",
+      "rock_fall" : "rock fall",
+      "Rockfall" : "rock fall",
+      "Rotational slide" : "rotational sliding",
+      "rotational_slide" : "rotational sliding",
+      "snow_avalanche" : "snow avalanche",
+      "topple" : "rock fall",
+      "translational_slide" : "translational sliding",
+      "unknown" : "ND",
+      "Unkown" : "ND",
+      "Landslide" : "earth slide"
     },
     "ls_trig_lookup" :{
       "Unknown": "ND",
@@ -34,10 +40,10 @@
       "Earthquake": "seismic"
     },
     "loc_acc_lookup" :{
-      "1km": 1000,
-      "exact": 0,
-      "Known exactly": 10,
-      "5km": 5000
+      "1km": "1000",
+      "exact": "0",
+      "Known exactly": "10",
+      "5km": "5000"
     }
   }
 }
