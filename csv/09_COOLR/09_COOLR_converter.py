@@ -76,6 +76,20 @@ new_data = {
 # New dataframe Creation
 df_NEW = pd.DataFrame(new_data)
 
+## -------------- TEST--------------
+
+# Lista di elementi univoci nella colonna 'loc_acc'
+elementi_univoci = df_OLD['loc_acc'].unique()
+
+# Stampa degli elementi univoci
+print("Elementi univoci nella colonna 'loc_acc':")
+for elemento in elementi_univoci:
+    print(elemento)
+
+##----------------------------------
+
+
+
 # New Dataframe Updating with the Old Dataframe columns content values
 df_NEW['WKT_GEOM'] = df_OLD['WKT_GEOM']
 df_NEW['NEW DATASET'] = "UGLC"
@@ -84,7 +98,7 @@ df_NEW['OLD DATASET'] = "Cooperative Open Online Landslide Repository (NASA) - r
 df_NEW['OLD ID'] = df_OLD['ev_id']
 df_NEW['VERSION'] = str("2019")
 df_NEW['COUNTRY'] = df_OLD['ctry_name'] #DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['ACCURACY'] = df_OLD['loc_acc'].fillna('-99999', inplace=True) #DA CONTROLLARE CON LOOKUP TABLE
+df_NEW['ACCURACY'] = df_OLD['loc_acc'].fillna(9999, inplace=True) #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['START DATE'] = df_OLD['ev_date'].combine_first(df_OLD['START DATE']) #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['END DATE'] = df_OLD['ev_date'].combine_first(df_OLD['END DATE']) #DA CONTROLLARE CON LOOKUP TABLE
 df_NEW['TYPE'] = df_OLD['ls_cat'] #DA CONTROLLARE CON LOOKUP TABLE

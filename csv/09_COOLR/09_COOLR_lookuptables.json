@@ -1,10 +1,10 @@
 {
   "09_COOLR LOOKUP TABLES": {
     "ev_id_lookup" :{
-      "0": "0",
-      "Mid": "1000",
-      "mid": "1000",
-      "Low": "-99999"
+      "0": 0,
+      "Mid": 1000,
+      "mid": 1000,
+      "Low": -99999
     },
     "ls_cat_lookup" :{
       "UnknownLandslide": "earth slide",
@@ -34,12 +34,10 @@
       "Earthquake": "seismic"
     },
     "loc_acc_lookup" :{
-      "1km": "1000",
-      "exact": "0",
-      "Known exactly": "10",
-      "Anthropogenic": "human",
-      "Volcanic Activity": "volcanic",
-      "Earthquake": "seismic"
+      "1km": 1000,
+      "exact": 0,
+      "Known exactly": 10,
+      "5km": 5000
     }
   }
 }
