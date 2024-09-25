@@ -20,9 +20,9 @@ root = os.getenv("FILES_REPO")
 df_OLD = pd.read_csv(f"{root}/input/native_datasets/10_BGS_native.csv", low_memory=False, encoding="utf-8")
 
 # JSON Lookup Tables Loading
-with open('10_BGS_lookuptables.json', 'r', encoding="utf-8") as file:
+with open('10_ETGFI_lookuptables.json', 'r', encoding="utf-8") as file:
     lookup_config = json.load(file)
-    lookup_tables = lookup_config["10_BGS LOOKUP TABLES"]
+    lookup_tables = lookup_config["10_ETGFI LOOKUP TABLES"]
 
 # Application of lookup Tables to the columns of the old DataFrame
 for column in df_OLD.columns:
