@@ -34,10 +34,26 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 
 ## :red_circle: Attribute fields summary
 
-|        | WKT_GEOM         | NEW DATASET | ID       | OLD DATASET | OLD ID | VERSION  | COUNTRY  | ACCURACY | START DATE | END DATE | TYPE    | TRIGGER | AFFIDABILITY | RPSV     | DPCM     | FATALITIES | INJURIES | NOTES  | LINK   |
-|--------|------------------|-------------|----------|-------------|--------|----------|----------|----------|------------|----------|---------|---------|--------------|----------|----------|------------|----------|--------|--------|
-| TYPE   | Well known text  | String      | Int      | String      | String | String   | String   | Int      | Date       | Date     | String  | String  | Int          | Bool     | Bool     | Int        | Int      | String | String |
-| STATUS | active           | Active      | Inactive | Active      | Active | Active   | Active   | Active   | Active     | Active   | Active  | Active  | Active       | Inactive | inactive | Active     | Active   | Active | Active |
+| ATTRIBUTE    | TYPE            |
+|--------------|-----------------|
+| WKT_GEOM     | Well known text |
+| NEW DATASET  | String          |
+| ID           | Int             |
+| OLD DATASET  | String          |
+| OLD ID       | String          |
+| VERSION      | String          |
+| COUNTRY      | String          |
+| ACCURACY     | Int             |
+| START DATE   | Date            |
+| END DATE     | Date            |
+| TYPE         | String          |
+| TRIGGER      | String          |
+| AFFIDABILITY | Int             |
+| RECORD TYPE  | String          |
+| FATALITIES   | Int             |
+| INJURIES     | Int             |
+| NOTES        | String          |
+| LINK         | String          |
 
 ----------------------------------------------------------------------------------------------------------------
 
@@ -55,19 +71,20 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 
 - <b> OLD DATASET: </b> the contents of this field represent the name of the native dataset used into the UGLC creation:
 
-    |POLYGONAL DATASET|
-    |-----------------|
-  
-    | REFERING                                                                                                                                                                                | NAME                                                                               | N° POLYGONS | LICENSE                                                                               | DOWNLOAD  | IMPLEMENTED           |
-    |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------------------|-----------|-----------------------|
-    | [01_PALI](https://zenodo.org/records/7057656)                                                                                                                                           | Patagonian Andes Landslide Inventory (Morales et al., 2022)                        | 10026       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
-    | [02_MAL](https://zenodo.org/records/6107187)                                                                                                                                            | Sabah (Malaysia)Landslides triggered by the 2015 6.0 Mw earthquake                 | 5198        | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
-    | [03_PH](https://zenodo.org/records/7520726)                                                                                                                                             | Cotabato - Davao del Sur (Philippines) Landslides triggered by the 2019 earthquake | 10593       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
-    | [04_HLD](https://zenodo.org/records/8308313)                                                                                                                                            | Haiti landslide dataset                                                            | 4178        | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | on demand | :heavy_check_mark:    |
+    | POLYGONAL DATASET |
+    |-------------------|
+
+    | REFERING                                                                                                                                                                                 | NAME                                                                               | N° POLYGONS | LICENSE                                                                               | DOWNLOAD  | IMPLEMENTED           |
+    |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|-------------|---------------------------------------------------------------------------------------|-----------|-----------------------|
+    | [01_PALI](https://zenodo.org/records/7057656)                                                                                                                                            | Patagonian Andes Landslide Inventory (Morales et al., 2022)                        | 10026       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
+    | [02_MAL](https://zenodo.org/records/6107187)                                                                                                                                             | Sabah (Malaysia)Landslides triggered by the 2015 6.0 Mw earthquake                 | 5198        | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
+    | [03_PH](https://zenodo.org/records/7520726)                                                                                                                                              | Cotabato - Davao del Sur (Philippines) Landslides triggered by the 2019 earthquake | 10593       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
+    | [04_HLD](https://zenodo.org/records/8308313)                                                                                                                                             | Haiti landslide dataset                                                            | 4178        | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | on demand | :heavy_check_mark:    |
     | [05_ASM](https://www.data.gov.uk/dataset/d614bc9b-2696-4bd6-be01-b461cee575d1/polygon-inventory-of-12-920-asia-summer-monsoon-asm-triggered-landslides-in-nepal-nerc-grant-ne-l002582-1) | ASIA summer moonsoon landslide dataset                                             | 12920       | [LICENSE](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | free      | :heavy_check_mark:    |
-    | [06_GEUS_DN](https://figshare.com/articles/dataset/Danish_landslide_inventory_211104/16965439/2)                                                                                        | GEUS national landslide inventory for Denmark                                      | 3202        | [LICENSE](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | free      | :heavy_check_mark:    |
-    | [07_UTH](https://gis.utah.gov/data/geoscience/landslides/)                                                                                                                              | Utah landslide Inventory polygons                                                  | 2381        | [LICENSE](https://gis.utah.gov/about/policy/license-disclaimer/)                      | free      | :heavy_check_mark:    |
-    | [08_JLD](https://zenodo.org/records/3775870)                                                                                                                            | Japan landslide dataset for semantic segmentation                                  | 331         | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
+    | [06_GEUS_DN](https://figshare.com/articles/dataset/Danish_landslide_inventory_211104/16965439/2)                                                                                         | GEUS national landslide inventory for Denmark                                      | 3202        | [LICENSE](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) | free      | :heavy_check_mark:    |
+    | [07_UTH](https://gis.utah.gov/data/geoscience/landslides/)                                                                                                                               | Utah landslide Inventory polygons                                                  | 2381        | [LICENSE](https://gis.utah.gov/about/policy/license-disclaimer/)                      | free      | :heavy_check_mark:    |
+    | [08_JLD](https://zenodo.org/records/3775870)                                                                                                                                             | Japan landslide dataset for semantic segmentation                                  | 331         | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
+    | [09_COOLR](https://maps.nccs.nasa.gov/arcgis/apps/MapAndAppGallery/index.html?appid=574f26408683485799d02e857e5d9521)                                                                                                                                           | Cooperative Open Online Landslide Repository - Report and Event Polygons (NASA)                                 | 20056       | [LICENSE](https://maps.nccs.nasa.gov/arcgis/apps/MapAndAppGallery/index.html?appid=574f26408683485799d02e857e5d9521)                      | free      | :heavy_check_mark:    |
 
 
 - <b> OLD ID: </b> the contents of this field represent the identifying id assigned to this row in the source dataset (if any)
