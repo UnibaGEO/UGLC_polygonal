@@ -1,11 +1,5 @@
 {
   "09_COOLR LOOKUP TABLES": {
-    "ev_id_lookup" :{
-      "0": 0,
-      "Mid": 1000,
-      "mid": 1000,
-      "Low": -99999
-    },
     "ls_cat_lookup" :{
       "complex" : "complex",
       "creep" : "soil creep",
@@ -32,12 +26,18 @@
       "Landslide" : "earth slide"
     },
     "ls_trig_lookup" :{
-      "Unknown": "ND",
-      "Rainfall": "rainfall",
-      "Other cause": "ND",
-      "Anthropogenic": "human",
-      "Volcanic Activity": "volcanic",
-      "Earthquake": "seismic"
+      "rain": "rainfall",
+      "continuous_rain" : "rainfall",
+      "unknown" : "ND",
+      "downpour" : "rainfall",
+      "flooding" : "rainfall",
+      "other" : "ND",
+      "snowfall_snowmelt" : "climate",
+      "earthquake" : "seismic",
+      "construction" : "human",
+      "no_apparent_trigger" : "ND",
+      "monsoon" : "rainfall",
+      "Rain" : "rainfall"
     },
     "loc_acc_lookup" :{
       "1km": "1000",

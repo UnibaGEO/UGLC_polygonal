@@ -88,24 +88,13 @@ df_NEW['ACCURACY'] = df_OLD['loc_acc'].fillna("-99999")
 df_NEW['START DATE'] = df_OLD['ev_date'].combine_first(df_OLD['START DATE'])
 df_NEW['END DATE'] = df_OLD['ev_date'].combine_first(df_OLD['END DATE'])
 df_NEW['TYPE'] = df_OLD['ls_cat']
-df_NEW['TRIGGER'] = df_OLD['ls_trig'] #DA CONTROLLARE CON LOOKUP TABLE
+df_NEW['TRIGGER'] = df_OLD['ls_trig']
 df_NEW['AFFIDABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = df_OLD['RECORD TYPE']
-df_NEW['FATALITIES'] = df_OLD['fatalities'] #DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['INJURIES'] = df_OLD['injuries'] #DA CONTROLLARE CON LOOKUP TABLE
-#DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['NOTES'] = df_NEW.apply(lambda row: f"COOLR - locality:{row['COUNTRY']}", axis=1) + df_OLD.apply(lambda row: f", description: {row['ev_title']} {row['ev_desc']}, area: {row['shape_Area']}, perimeter: {row['shape_Leng']}, volume: ND", axis=1)
-#DA CONTROLLARE CON LOOKUP TABLE
-df_NEW['LINK'] = df_OLD.apply(lambda row:f"Source: {row['src_name']} - {row['src_link']}", axis=1)
-
-
-## -------------- TEST--------------
-
-print(df_OLD['ls_cat'].unique())
-print(df_NEW['TYPE'].unique())
-
-##----------------------------------
-
+df_NEW['FATALITIES'] = df_OLD['fatalities'].fillna("-99999").astype(int)
+df_NEW['INJURIES'] = df_OLD['injuries'].fillna("-99999").astype(int)
+df_NEW['NOTES'] = df_OLD.apply(lambda row: f"COOLR - locality:{row['loc_desc']}, description: {row['ev_title']} {row['ev_desc']}, area: {row['shape_Area']}, perimeter: {row['shape_Leng']}, volume: ND", axis=1)
+df_NEW['LINK'] = df_OLD.apply(lambda row:f"Source: {row['src_link']} - {row['src_name']}", axis=1)
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Corrections

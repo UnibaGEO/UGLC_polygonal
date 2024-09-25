@@ -40,13 +40,17 @@ df_orig_e['shape_Area'].fillna('ND', inplace=True)
 df_orig_e['RECORD TYPE'] = 'event'
 df_orig_e['loc_acc'] = "-99999"
 df_orig_e['ev_date'] = pd.to_datetime(df_orig_e['ev_date'], errors='coerce').dt.strftime('%Y/%m/%d')
+df_orig_e['loc_desc'].fillna('ND', inplace=True)
+df_orig_e['src_link'].fillna(' ', inplace=True)
+df_orig_e['src_name'].fillna('ND', inplace=True)
 
 # Select all columns except for 'geometry'
 e_columns_to_save = [col for col in df_orig_e.columns if col != 'geometry']
 
 # Create a new DataFrame with the selected columns
 df_e_final = df_orig_e[e_columns_to_save]
-# ------------------
+
+### ------------------------------------------------------------
 
 # report polygons
 # Read the SHP file
@@ -66,6 +70,8 @@ df_orig_r['shape_Area'].fillna('ND', inplace=True)
 df_orig_r['loc_acc'].fillna('-99999', inplace=True)
 df_orig_r['RECORD TYPE'] = 'report'
 df_orig_r['ev_date'] = pd.to_datetime(df_orig_r['ev_date'], errors='coerce').dt.strftime('%Y/%m/%d')
+df_orig_r['src_link'].fillna('ND', inplace=True)
+df_orig_r['src_name'].fillna('ND', inplace=True)
 
 # Select all columns except for 'geometry'
 r_columns_to_save = [col for col in df_orig_r.columns if col != 'geometry']
@@ -73,7 +79,7 @@ r_columns_to_save = [col for col in df_orig_r.columns if col != 'geometry']
 # Create a new DataFrame with the selected columns
 df_r_final = df_orig_r[r_columns_to_save]
 
-# ------------------
+### ------------------------------------------------------------
 
 # Merging the event and report catalog together
 df_final = pd.concat([df_r_final, df_e_final], ignore_index=True)
