@@ -19,9 +19,9 @@ root = os.getenv("FILES_REPO")
 df_OLD = pd.read_csv(f"{root}/input/native_datasets/11_NTMI_native.csv", low_memory=False, encoding="utf-8")
 
 # JSON Lookup Tables Loading
-with open('11_NTMI_lookuptables.json', 'r', encoding="utf-8") as file:
+with open('11_OR_lookuptables.json', 'r', encoding="utf-8") as file:
     lookup_config = json.load(file)
-    lookup_tables = lookup_config["11_NTMI LOOKUP TABLES"]
+    lookup_tables = lookup_config["11_OR LOOKUP TABLES"]
 
 # Application of lookup Tables to the columns of the old DataFrame
 for column in df_OLD.columns:
