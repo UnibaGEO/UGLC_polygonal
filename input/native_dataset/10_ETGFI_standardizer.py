@@ -27,18 +27,22 @@ df_orig = gpd.read_file(f"{root}/input/download/10_Earthquake-Triggered Ground-F
 # Set the CRS as EPSG:4326
 df_orig = df_orig.to_crs(epsg=4326)
 
-### NON FUNZIONA, NON LEGGE IL WKT
+# null geometries cleaning
+none_geometries = df_orig[df_orig.geometry.isna()]
+df_orig = df_orig.dropna(subset=['geometry'])
+print(f"{len(none_geometries)} null geometries removed from the file")
+# ### NON FUNZIONA, NON LEGGE IL WKT
 
 # Generate the WKT_GEOM for the polygons
 df_orig['WKT_GEOM'] = df_orig.geometry.apply(lambda geom: geom.wkt)
 df_orig['location'] = df_orig['event_name'].str.split(' - ', n=1).str[1]
-df_orig['volume'].round(2)
 df_orig['inventory_'].fillna('ND', inplace=True)
 df_orig['comments'].fillna('ND', inplace=True)
 df_orig['Shape_Leng'].fillna('ND', inplace=True)
 df_orig['area'].fillna('ND', inplace=True)
 df_orig['descriptio'].fillna('ND', inplace=True)
 df_orig['source_lin'].fillna('ND', inplace=True)
+df_orig['TYPE'] = df_orig['descriptio']
 
 # Select all columns except for 'geometry'
 columns_to_save = [col for col in df_orig.columns if col != 'geometry']
@@ -49,5 +53,3 @@ df_final = df_orig[columns_to_save]
 # Save the final DataFrame to a CSV file
 output_path = f"{root}/input/native_dataset/10_ETGFI_native.csv"
 df_final.to_csv(output_path, index=False, sep=';', encoding="utf-8")
-
-### ------------------------------------------------------------

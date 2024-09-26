@@ -24,27 +24,21 @@ print(f"Using root= {root}")
 # Read the SHP file
 df_orig = gpd.read_file(f"{root}/input/download/5_ASM-Asia Summer Monsoon/166966/DataFile5_-_12920ASMinventory.shp")
 
-
 # Set the CRS as EPSG:4326
 df_orig = df_orig.to_crs(epsg=4326)
-
 
 # Generate the WKT_GEOM for the polygons
 df_orig['WKT_GEOM'] = df_orig.geometry.apply(lambda geom: geom.wkt)
 
-
 # Select all columns except for 'geometry'
 columns_to_save = [col for col in df_orig.columns if col != 'geometry']
-
 
 # Create a new DataFrame with the selected columns
 df_final = df_orig[columns_to_save]
 
-
 # Add 'START DATE' and 'END DATE' columns
 df_final['START DATE'] = '01/01/1988'
 df_final['END DATE'] = '31/12/2018'
-
 
 # Save the final DataFrame to a CSV file
 output_path = f"{root}/input/native_dataset/05_ASM_native.csv"
