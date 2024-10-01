@@ -31,7 +31,6 @@ df_orig = df_orig.to_crs(epsg=4326)
 none_geometries = df_orig[df_orig.geometry.isna()]
 df_orig = df_orig.dropna(subset=['geometry'])
 print(f"{len(none_geometries)} null geometries removed from the file")
-# ### NON FUNZIONA, NON LEGGE IL WKT
 
 # Generate the WKT_GEOM for the polygons
 df_orig['WKT_GEOM'] = df_orig.geometry.apply(lambda geom: geom.wkt)

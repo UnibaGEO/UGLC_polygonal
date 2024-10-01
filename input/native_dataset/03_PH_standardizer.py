@@ -52,12 +52,12 @@ df_final2 = df_orig2[columns_to_save2]
 df_final3 = df_orig3[columns_to_save3]
 
 # Add 'START DATE' and 'END DATE' columns
-df_final1['START DATE'] = '01/10/2019'
-df_final1['END DATE'] = '31/10/2019'
-df_final2['START DATE'] = '01/11/2019'
-df_final2['END DATE'] = '30/11/2019'
-df_final3['START DATE'] = '01/12/2019'
-df_final3['END DATE'] = '31/12/2019'
+df_final1['START DATE'] = '2019/10/01'
+df_final1['END DATE'] = '2019/10/31'
+df_final2['START DATE'] = '2019/11/01'
+df_final2['END DATE'] = '2019/11/31'
+df_final3['START DATE'] = '2019/12/01'
+df_final3['END DATE'] = '2019/12/31'
 
 # Concatenate the DataFrames
 df_final = pd.concat([df_final1, df_final2, df_final3])

@@ -37,8 +37,8 @@ columns_to_save = [col for col in df_orig.columns if col != 'geometry']
 df_final = df_orig[columns_to_save]
 
 # Add 'START DATE' and 'END DATE' columns
-df_final['START DATE'] = '01/01/1988'
-df_final['END DATE'] = '31/12/2018'
+df_final['START DATE'] = '1988/01/01'
+df_final['END DATE'] = '2018/12/31'
 
 # Save the final DataFrame to a CSV file
 output_path = f"{root}/input/native_dataset/05_ASM_native.csv"

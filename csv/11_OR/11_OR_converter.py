@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 #                                              UGLC DATAFRAME CONVERTER
 #-----------------------------------------------------------------------------------------------------------------------
-# native dataframe:     NTMI -  Landslide Inventory  (Irish Landslides Working Group - Geological Survey Ireland (GSI))
+# native dataframe:     OR - Oregon Landslides inventory
 #-----------------------------------------------------------------------------------------------------------------------
 # Conversion
 #-----------------------------------------------------------------------------------------------------------------------
@@ -9,14 +9,26 @@ import pandas as pd
 import json
 import os
 from dotenv import load_dotenv
-from lib.function_collection import apply_affidability_calculator, populate_end_date, populate_start_date
+from lib.function_collection import apply_affidability_calculator
 
-# Load the enviroment variables from config.env file
+# Enviroment loading from config.env file -----------------------------------------------------------------------
+
 load_dotenv("../../config.env")
-root = os.getenv("FILES_REPO")
+files_repo = os.getenv("FILES_REPO")
+files_repo_linux = os.getenv("FILES_REPO_LINUX")
+
+# Verify if its there is a Windows G-Drive files repo or a Linux G-Drive files repo
+if os.path.exists(files_repo):
+    root = files_repo
+else:
+    root = files_repo_linux
+
+print(f"Using root= {root}")
+
+# -----------------------------------------------------------------------
 
 # Native Dataframe 01_COOLR_native loading
-df_OLD = pd.read_csv(f"{root}/input/native_datasets/11_NTMI_native.csv", low_memory=False, encoding="utf-8")
+df_OLD = pd.read_csv(f"{root}/input/native_dataset/11_OR_native.csv", sep=';', low_memory=False, encoding="utf-8")
 
 # JSON Lookup Tables Loading
 with open('11_OR_lookuptables.json', 'r', encoding="utf-8") as file:
@@ -38,10 +50,6 @@ for column in df_OLD.columns:
             # Update just the no-"ND" columns
             df_OLD[column] = df_OLD[column].map(lambda x: lookup_table.get(str(x), x))
 
-#NaN values filling
-df_OLD['LOCATION_C'] = df_OLD['LOCATION_C'].fillna('ND')
-df_OLD['EVENT_NAME'] = df_OLD['EVENT_NAME'].fillna('ND')
-df_OLD['IMPACT_COM'] = df_OLD['IMPACT_COM'].fillna('ND')
 
 # New dataframe Configuration
 new_data = {
@@ -72,21 +80,21 @@ df_NEW = pd.DataFrame(new_data)
 df_NEW['WKT_GEOM'] = df_OLD['WKT_GEOM']
 df_NEW['NEW DATASET'] = "UGLC"
 df_NEW['ID'] = "CALC"
-df_NEW['OLD DATASET'] = "Landslide Inventory  (Irish Landslides Working Group - Geological Survey Ireland (GSI)"
-df_NEW['OLD ID'] = df_OLD['EVENT_ID']
-df_NEW['VERSION'] = str("Last update 2020")
-df_NEW['COUNTRY'] = "Ireland"
-df_NEW['ACCURACY'] = df_OLD['ACCURACY'].apply(lambda x: int(x) if pd.notna(x) else -99999)
-df_NEW['START DATE'] = df_OLD.apply(populate_start_date, axis=1)
-df_NEW['END DATE'] = df_OLD.apply(populate_end_date, axis=1)
-df_NEW['TYPE'] = df_OLD['LANDSIDE_M']
-df_NEW['TRIGGER'] = df_OLD['TRIGGER']
+df_NEW['OLD DATASET'] = "OR - Oregon Landslides inventory"
+df_NEW['OLD ID'] = df_OLD.apply(lambda row: f"{row['OBJECTID']} - {row['UNIQUE_ID']}", axis=1)
+df_NEW['VERSION'] = str("2021/07/30")
+df_NEW['COUNTRY'] = "United States of America"
+df_NEW['ACCURACY'] = df_OLD["CONFIDENCE"]
+df_NEW['START DATE'] = df_OLD["START DATE"]
+df_NEW['END DATE'] = df_OLD["END DATE"]
+df_NEW['TYPE'] = df_OLD["TYPE_MOVE"]
+df_NEW['TRIGGER'] = "ND"
 df_NEW['AFFIDABILITY'] = "CALC"
-df_NEW['RECORD TYPE'] = df_OLD['TRIGGER'].apply(lambda x: 'report' if x == 'natural' else 'event')
+df_NEW['RECORD TYPE'] = "report"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = df_OLD.apply(lambda row: f"NTMI - locality: {repr(row['LOCATION_C'])}, {repr(row['EVENT_NAME'])} - description: {repr(row['IMPACT_COM'])} ", axis=1)
-df_NEW['LINK'] = df_OLD.apply(lambda row: f"Source: {repr(row['SOURCE_MERGED'])}", axis=1)
+df_NEW['NOTES'] = df_OLD.apply(lambda row: f"OR - locality: Oregon, description: {row['Descrip']} {row['DEEP_SHAL']}, area: {row['AREA']}, perimeter: {row['SHAPE_Leng']}, volume: {row['VOL']}", axis=1)
+df_NEW['LINK'] = df_OLD.apply(lambda row: f"Source: ND", axis=1)
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Corrections
@@ -99,9 +107,8 @@ apply_affidability_calculator(df_NEW)
 #-----------------------------------------------------------------------------------------------------------------------
 
 # Creation of the new updated Dataframe as a .csv file in the selected directory
-df_NEW.to_csv(f"{root}/output/converted_csv/11_NTMI_converted.csv", sep=',', index=False, encoding="utf-8")
+df_NEW.to_csv(f"{root}/output/converted_csv/11_OR_converted.csv", sep=',', index=False, encoding="utf-8")
 
 print("__________________________________________________________________________________________")
-print("                             11_NTMI_native conversion: DONE                              ")
+print("                             11_OR_native conversion: DONE                             ")
 print("__________________________________________________________________________________________")
-#--------------------------------------------------------------------------------------------------------------------

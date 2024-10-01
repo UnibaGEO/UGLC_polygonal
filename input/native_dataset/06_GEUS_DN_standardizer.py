@@ -1,7 +1,6 @@
 from dotenv import load_dotenv
 import os
 import geopandas as gpd
-import pandas as pd
 
 # Enviroment loading from config.env file -----------------------------------------------------------------------
 
@@ -43,8 +42,8 @@ df_final = df_orig[columns_to_save]
 
 
 # Add 'START DATE' and 'END DATE' columns
-df_final['START DATE'] = '01/01/2014'
-df_final['END DATE'] = '31/12/2020'
+df_final['START DATE'] = '2014/01/01'
+df_final['END DATE'] = '2020/12/31'
 
 
 # Save the final DataFrame to a CSV file

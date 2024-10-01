@@ -148,23 +148,23 @@ def apply_affidability_calculator(df):
 # START DATE date composer
 def populate_start_date(row):
     if row['d_h_move1'] != 0:
-        return f"01/01/{int(row['d_h_move1'])}"
+        return f"{int(row['d_h_move1'])}/01/01"
     elif row['d_h_move2'] != 0:
-        return f"01/01/{int(row['d_h_move2'])}"
+        return f"{int(row['d_h_move2'])}/01/01"
     elif row['d_h_move3'] != 0:
-        return f"01/01/{int(row['d_h_move3'])}"
+        return f"{int(row['d_h_move3'])}01/01"
     else:
-        return "01/01/1937"
+        return "1937/01/01"
 
 # END DATE date composer
 def populate_end_date(row):
     if row['d_h_move3'] != 0:
-        return f"31/12/{int(row['d_h_move3'])}"
+        return f"{int(row['d_h_move3'])}/12/31"
     elif row['d_h_move2'] != 0:
-        return f"31/12/{int(row['d_h_move2'])}"
+        return f"{int(row['d_h_move2'])}/12/31"
     elif row['d_h_move1'] != 0:
-        return f"31/12/{int(row['d_h_move1'])}"
+        return f"{int(row['d_h_move1'])}/12/31"
     else:
-        return "31/12/2012"
+        return "2012/12/31"
 
 # -----------------------------------------------------------------------------------------------------------------------
