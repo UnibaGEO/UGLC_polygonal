@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 # Enviroment loading from config.env file -----------------------------------------------------------------------
 
-load_dotenv("../../config.env")
+load_dotenv("../config.env")
 files_repo = os.getenv("FILES_REPO")
 files_repo_linux = os.getenv("FILES_REPO_LINUX")
 
