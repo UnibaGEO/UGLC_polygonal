@@ -80,20 +80,20 @@ df_NEW = pd.DataFrame(new_data)
 df_NEW['WKT_GEOM'] = df_OLD['WKT_GEOM']
 df_NEW['NEW DATASET'] = "UGLC"
 df_NEW['ID'] = "CALC"
-df_NEW['OLD DATASET'] = "12 - Inventario fenomeni franosi in Italia (IFFI)"
+df_NEW['OLD DATASET'] = "IFFI - Inventario fenomeni franosi in Italia"
 df_NEW['OLD ID'] = df_OLD["id_frana"]
 df_NEW['VERSION'] = str("2024/04/19")
 df_NEW['COUNTRY'] = "Italy"
-df_NEW['ACCURACY'] = df_OLD["CONFIDENCE"] # DA COMPLETAREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-df_NEW['START DATE'] = df_OLD["START DATE"]
-df_NEW['END DATE'] = df_OLD["END DATE"]
-df_NEW['TYPE'] = df_OLD["TYPE_MOVE"]
+df_NEW['ACCURACY'] = "0"
+df_NEW['START DATE'] = "1677/12/31"
+df_NEW['END DATE'] = "2024/04/19"
+df_NEW['TYPE'] = df_OLD["nome_tipo"]
 df_NEW['TRIGGER'] = "ND"
 df_NEW['AFFIDABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = "report"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = df_OLD.apply(lambda row: f"OR - locality: Oregon, description: {row['Descrip']} {row['DEEP_SHAL']}, area: {row['AREA']}, perimeter: {row['SHAPE_Leng']}, volume: {row['VOL']}", axis=1)
+df_NEW['NOTES'] = df_OLD.apply(lambda row: f"OR - locality: Italy - (region:{row['nome_reg']}), province:{row['nome_prov']}, city: {row['nome_com']}, description: ND, area: ND, perimeter: ND, volume: ND", axis=1)
 df_NEW['LINK'] = df_OLD.apply(lambda row: f"Source: ND", axis=1)
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -107,8 +107,8 @@ apply_affidability_calculator(df_NEW)
 #-----------------------------------------------------------------------------------------------------------------------
 
 # Creation of the new updated Dataframe as a .csv file in the selected directory
-df_NEW.to_csv(f"{root}/output/converted_csv/11_OR_converted.csv", sep=',', index=False, encoding="utf-8")
+df_NEW.to_csv(f"{root}/output/converted_csv/12_IFFI_converted.csv", sep=',', index=False, encoding="utf-8")
 
 print("__________________________________________________________________________________________")
-print("                             11_OR_native conversion: DONE                             ")
+print("                             12_IFFI_native conversion: DONE                              ")
 print("__________________________________________________________________________________________")
