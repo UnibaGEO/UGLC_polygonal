@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------------------------------------------------
 #                                              UGLC DATAFRAME CONVERTER
 #-----------------------------------------------------------------------------------------------------------------------
-# native dataframe:     17 -  Inventario fenomeni franosi in Italia (IFFI)
+# native dataframe:     12 - Inventario fenomeni franosi in Italia (IFFI)
 #-----------------------------------------------------------------------------------------------------------------------
 # Conversion
 #-----------------------------------------------------------------------------------------------------------------------
@@ -9,14 +9,26 @@ import pandas as pd
 import json
 import os
 from dotenv import load_dotenv
-from lib.function_collection import apply_affidability_calculator, compose_start_date, compose_end_date
+from lib.function_collection import apply_affidability_calculator
 
-# Load the enviroment variables from config.env file
+# Enviroment loading from config.env file -----------------------------------------------------------------------
+
 load_dotenv("../../config.env")
-root = os.getenv("FILES_REPO")
+files_repo = os.getenv("FILES_REPO")
+files_repo_linux = os.getenv("FILES_REPO_LINUX")
+
+# Verify if its there is a Windows G-Drive files repo or a Linux G-Drive files repo
+if os.path.exists(files_repo):
+    root = files_repo
+else:
+    root = files_repo_linux
+
+print(f"Using root= {root}")
+
+# -----------------------------------------------------------------------
 
 # Native Dataframe 01_COOLR_native loading
-df_OLD = pd.read_csv(f"{root}/input/native_datasets/17_IFFI_native.csv", low_memory=False, encoding="utf-8")
+df_OLD = pd.read_csv(f"{root}/input/native_dataset/12_IFFI_native.csv", sep=';', low_memory=False, encoding="utf-8")
 
 # JSON Lookup Tables Loading
 with open('12_IFFI_lookuptables.json', 'r', encoding="utf-8") as file:
@@ -37,6 +49,7 @@ for column in df_OLD.columns:
         else:
             # Update just the no-"ND" columns
             df_OLD[column] = df_OLD[column].map(lambda x: lookup_table.get(str(x), x))
+
 
 # New dataframe Configuration
 new_data = {
@@ -67,20 +80,20 @@ df_NEW = pd.DataFrame(new_data)
 df_NEW['WKT_GEOM'] = df_OLD['WKT_GEOM']
 df_NEW['NEW DATASET'] = "UGLC"
 df_NEW['ID'] = "CALC"
-df_NEW['OLD DATASET'] = "Inventario fenomeni franosi in Italia"
-df_NEW['OLD ID'] = df_OLD['id_frana']
+df_NEW['OLD DATASET'] = "IFFI - Inventario fenomeni franosi in Italia"
+df_NEW['OLD ID'] = df_OLD["id_frana"]
 df_NEW['VERSION'] = str("2024/04/19")
 df_NEW['COUNTRY'] = "Italy"
 df_NEW['ACCURACY'] = "0"
-df_NEW['START DATE'] = "1677/12/31" # standardized version of 1116/01/01
-df_NEW['END DATE'] = "2022/12/31"
-df_NEW['TYPE'] = df_OLD['nome_tipo']
+df_NEW['START DATE'] = "1677/12/31"
+df_NEW['END DATE'] = "2024/04/19"
+df_NEW['TYPE'] = df_OLD["nome_tipo"]
 df_NEW['TRIGGER'] = "ND"
 df_NEW['AFFIDABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = "report"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
-df_NEW['NOTES'] = df_OLD.apply(lambda row: f"IFFI - locality: Italy, {row['nome_reg']}, {row['nome_com']} - description: ND", axis=1)
+df_NEW['NOTES'] = df_OLD.apply(lambda row: f"OR - locality: Italy - (region:{row['nome_reg']}), province:{row['nome_prov']}, city: {row['nome_com']}, description: ND, area: ND, perimeter: ND, volume: ND", axis=1)
 df_NEW['LINK'] = df_OLD.apply(lambda row: f"Source: ND", axis=1)
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -94,9 +107,8 @@ apply_affidability_calculator(df_NEW)
 #-----------------------------------------------------------------------------------------------------------------------
 
 # Creation of the new updated Dataframe as a .csv file in the selected directory
-df_NEW.to_csv(f"{root}/output/converted_csv/17_IFFI_converted.csv", sep=',', index=False, encoding="utf-8")
+df_NEW.to_csv(f"{root}/output/converted_csv/12_IFFI_converted.csv", sep=',', index=False, encoding="utf-8")
 
 print("__________________________________________________________________________________________")
-print("                             17_IFFI_native conversion: DONE                              ")
+print("                             12_IFFI_native conversion: DONE                              ")
 print("__________________________________________________________________________________________")
-#--------------------------------------------------------------------------------------------------------------------

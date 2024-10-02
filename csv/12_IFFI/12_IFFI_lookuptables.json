@@ -1,11 +1,10 @@
 {
-  "17_IFFI LOOKUP TABLES": {
-
+  "12_IFFI LOOKUP TABLES": {
     "nome_tipo_lookup": {
       "Scivolamento rotazionale/traslativo": "complex",
       "Colamento lento": "soil creep",
       "Complesso": "complex",
-      "n.d.": "not defined",
+      "n.d.": "ND",
       "Colamento rapido": " mud flow",
       "Crollo/Ribaltamento": "rock fall",
       "DGPV": "earth slide",
