@@ -38,17 +38,24 @@ for file in csv_files:
 # Data Cleaning: removes records with 'TYPE' == "snow avalanche"
 df_combined = df_combined[df_combined['TYPE'] != "snow avalanche"]
 
-## ------------------------------------
-
+# Adding the general dataframe ID
 df_combined['ID'] = [str(i) for i in range(1, len(df_combined) + 1)]
+
+## ------------------ DIRECTORY SELECTION ------------------
+## G-Cloud directory
+## (keep this commented when is not used)
+## print(f"> Saving on cloud directory")
+# output_file_root = f"{root}/output"
+
+## Local directory
+## (insert your local directory)
+## (keep this commented when is not used)
+print(f"> Saving on local directory")
+output_file_root = f"C:/Users/microzonazione_05/Desktop/UGLC Dataset/UGLC_poly"
 
 # Verify the csv files presence into the dir
 if csv_files:
-    # Save the DataFrame combined as a new CSV file
-    # G-Cloud directory
-    # output_file = f"{root}/output/UGLC_poly.csv"
-    # Local directory
-    output_file = f"C:/Users/microzonazione_05/Desktop/UGLC Dataset/UGLC_poly/UGLC_poly.csv"
+    output_file = f"{output_file_root}/UGLC_poly.csv"
     df_combined.to_csv(output_file, index=False, sep='|')
     print(f"UGLC Dataframe created on '{output_file}' path with '|' as separator.")
 else:
