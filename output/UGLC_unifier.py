@@ -33,12 +33,22 @@ for file in csv_files:
     df_temp = pd.read_csv(file_path, dtype={'VERSION': object})  # Set datatype of the col "VERSION as obj str (hotfix)
     df_combined = pd.concat([df_combined, df_temp], ignore_index=True)
 
+## ------------------ DATA CLEANING ------------------
+
+# Data Cleaning: removes records with 'TYPE' == "snow avalanche"
+df_combined = df_combined[df_combined['TYPE'] != "snow avalanche"]
+
+## ------------------------------------
+
 df_combined['ID'] = [str(i) for i in range(1, len(df_combined) + 1)]
 
 # Verify the csv files presence into the dir
 if csv_files:
     # Save the DataFrame combined as a new CSV file
-    output_file = f"{root}/output/UGLC_poly.csv"
+    # G-Cloud directory
+    # output_file = f"{root}/output/UGLC_poly.csv"
+    # Local directory
+    output_file = f"C:/Users/microzonazione_05/Desktop/UGLC Dataset/UGLC_poly/UGLC_poly.csv"
     df_combined.to_csv(output_file, index=False, sep='|')
     print(f"UGLC Dataframe created on '{output_file}' path with '|' as separator.")
 else:
