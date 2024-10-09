@@ -134,7 +134,6 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
     | rock fall                    |
     | rotational sliding           |
     | translational sliding        |
-    | snow avalanche               |
     | earth spreading              |
     | rock spreading               |
     | glacial lake outburst floods |
