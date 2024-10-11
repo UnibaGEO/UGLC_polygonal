@@ -6,9 +6,7 @@
 # Conversion
 #-----------------------------------------------------------------------------------------------------------------------
 import pandas as pd
-import json
-import numpy as np
-from lib.function_collection import apply_affidability_calculator
+from lib.function_collection import apply_RELIABILITY_calculator
 from dotenv import load_dotenv
 import os
 
@@ -69,7 +67,7 @@ df_NEW['START DATE'] = "2008/12/31"
 df_NEW['END DATE'] = "2016/03/21"
 df_NEW['TYPE'] = "ND"
 df_NEW['TRIGGER'] = "seismic"
-df_NEW['AFFIDABILITY'] = "CALC"
+df_NEW['RELIABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = "event"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
@@ -79,7 +77,7 @@ df_NEW['LINK'] = "Source: ND"
 # Corrections
 #-----------------------------------------------------------------------------------------------------------------------
 
-apply_affidability_calculator(df_NEW)
+apply_RELIABILITY_calculator(df_NEW)
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Output

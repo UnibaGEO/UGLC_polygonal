@@ -5,12 +5,10 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # Conversion
 #-----------------------------------------------------------------------------------------------------------------------
-import json
-from lib.function_collection import apply_country_corrections,apply_affidability_calculator
+from lib.function_collection import apply_RELIABILITY_calculator
 import pandas as pd
 import os
 from dotenv import load_dotenv
-from shapely import wkt
 
 # Enviroment loading from config.env file -----------------------------------------------------------------------
 
@@ -46,7 +44,7 @@ new_data = {
     'END DATE': [],
     'TYPE': [],
     'TRIGGER': [],
-    'AFFIDABILITY': [],
+    'RELIABILITY': [],
     'RECORD TYPE': [],
     'FATALITIES': [],
     'INJURIES': [],
@@ -70,7 +68,7 @@ df_NEW['START DATE'] = '2020/01/01'
 df_NEW['END DATE'] = '2021/12/31'
 df_NEW['TYPE'] = 'ND'
 df_NEW['TRIGGER'] = 'ND'
-df_NEW['AFFIDABILITY'] = 'CALC'
+df_NEW['RELIABILITY'] = 'CALC'
 df_NEW['RECORD TYPE'] = 'event'
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
@@ -81,7 +79,7 @@ df_NEW['LINK'] = "ND"
 #-----------------------------------------------------------------------------------------------------------------------
 
 
-apply_affidability_calculator(df_NEW)
+apply_RELIABILITY_calculator(df_NEW)
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Output
