@@ -8,7 +8,7 @@
 import pandas as pd
 import os
 from dotenv import load_dotenv
-from lib.function_collection import apply_affidability_calculator
+from lib.function_collection import apply_RELIABILITY_calculator
 
 # Enviroment loading from config.env file -----------------------------------------------------------------------
 
@@ -42,7 +42,7 @@ new_data = {
     'END DATE': [],
     'TYPE': [],
     'TRIGGER': [],
-    'AFFIDABILITY': [],
+    'RELIABILITY': [],
     'RECORD TYPE': [],
     'FATALITIES': [],
     'INJURIES': [],
@@ -66,7 +66,7 @@ df_NEW['START DATE'] = df_OLD['START DATE']
 df_NEW['END DATE'] = df_OLD['END DATE']
 df_NEW['TYPE'] = "ND"
 df_NEW['TRIGGER'] = "ND"
-df_NEW['AFFIDABILITY'] = "CALC"
+df_NEW['RELIABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = "event"
 df_NEW['FATALITIES'] = "-99999"
 df_NEW['INJURIES'] = "-99999"
@@ -77,7 +77,7 @@ df_NEW['LINK'] = "Source: ND"
 # Corrections
 #-----------------------------------------------------------------------------------------------------------------------
 
-apply_affidability_calculator(df_NEW)
+apply_RELIABILITY_calculator(df_NEW)
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Output

@@ -91,9 +91,9 @@ def apply_country_corrections(df):
 # -----------------------------------------------------------------------------------------------------------------------
 #3 AFFIDABILITY CALCULATOR
 
-def apply_affidability_calculator(df):
-    # Affidability function for assign a value between 1 and 10 into the AFFIDABILITY column
-    def assign_affidability(row):
+def apply_RELIABILITY_calculator(df):
+    # RELIABILITY function for assign a value between 1 and 10 into the RELIABILITY column
+    def assign_RELIABILITY(row):
         accuracy = int(row['ACCURACY'])
         start_date = (row['START DATE'])
         end_date = (row['END DATE'])
@@ -136,11 +136,11 @@ def apply_affidability_calculator(df):
             elif accuracy > 1000 and start_date != end_date:
                 return "9"
     print("__________________________________________________________________________________________")
-    print("                             AFFIDABILITY  calculation: DONE                              ")
+    print("                             RELIABILITY  calculation: DONE                              ")
     print("__________________________________________________________________________________________")
 
-    # Apply the affidability on it's column
-    df['AFFIDABILITY'] = df.apply(assign_affidability, axis=1)
+    # Apply the RELIABILITY on it's column
+    df['RELIABILITY'] = df.apply(assign_RELIABILITY, axis=1)
     return df
 
 # -----------------------------------------------------------------------------------------------------------------------

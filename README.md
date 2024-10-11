@@ -48,7 +48,7 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 | END DATE     | Date            |
 | TYPE         | String          |
 | TRIGGER      | String          |
-| AFFIDABILITY | Int             |
+| RELIABILITY | Int             |
 | RECORD TYPE  | String          |
 | FATALITIES   | Int             |
 | INJURIES     | Int             |
@@ -159,10 +159,10 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
     | Unknown                                        | ND                       | 
 
 
-- <b> AFFIDABILITY: </b> the content of this field represents the reliability of the data based on a decision table that takes into 
+- <b> RELIABILITY: </b> the content of this field represents the reliability of the data based on a decision table that takes into 
     account spatial accuracy (ACCURACY) and temporal accuracy (START DATE, END DATE):
 
-    | SPATIAL AFFIDABILITY   | TEMPORAL AFFIDABILITY          | AFFIDABILITY DESCRIPTION         | CLASS          |
+    | SPATIAL RELIABILITY    | TEMPORAL RELIABILITY           | RELIABILITY DESCRIPTION          | CLASS          |
     |------------------------|--------------------------------|----------------------------------|----------------|
     | <i>(meters)</i>        | <i>(START DATE = END DATE)</i> | <i>(Description)</i>             | <i>(value)</i> |
     | ( <100 m )             | TRUE                           | Exact point                      | 1              | 
