@@ -58,5 +58,19 @@ if csv_files:
     output_file = f"{output_file_root}/UGLC_poly.csv"
     df_combined.to_csv(output_file, index=False, sep='|')
     print(f"UGLC Dataframe created on '{output_file}' path with '|' as separator.")
+
+# -------TEST SAVING AS .GPKG----------
+
+    # Convert the dataframe to GeoDataFrame assuming it has geometry in 'WKT_GEOM'
+#    gdf = gpd.GeoDataFrame(df_combined, geometry=gpd.GeoSeries.from_wkt(df_combined['WKT_GEOM']))
+    
+    # Set the CRS to EPSG:4326 (WGS 84), adjust if necessary
+#    gdf.set_crs(epsg=4326, inplace=True)
+    
+    # Save as GeoPackage
+#    output_file_gpkg = f"{output_file_root}/UGLC_poly.gpkg"
+#    gdf.to_file(output_file_gpkg, driver='GPKG')
+#    print(f"UGLC GeoDataFrame created on '{output_file_gpkg}' path as GeoPackage.")
+# -------------------------------------
 else:
     print("No CSV file found in to the directory.")
