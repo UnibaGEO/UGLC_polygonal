@@ -251,6 +251,15 @@ Into the main folder there is also this readme file wich contains all this infor
 dataframe.
 
 --------------------------------------------------------
+## :red_circle: Tiling system
+
+<img alt="Dataframe Folder Structure" src="files/UGLC_tile_grid_map.jpeg"/>
+<p align="center"><i> UGLC tile grid map </i></p>
+
+The polygonal catalog is also available in GeoPackage format, divided into 64 rectangular tiles covering the entire 
+earth surface, having a Tile_ID attribute necessary for their identification.
+
+--------------------------------------------------------
 ## :red_circle: Requirements
 
 ----------------------------------------------------------------------------------------------------------------
