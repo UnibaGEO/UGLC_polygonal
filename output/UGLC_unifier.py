@@ -9,7 +9,7 @@ load_dotenv("../config.env")
 files_repo = os.getenv("FILES_REPO")
 files_repo_linux = os.getenv("FILES_REPO_LINUX")
 
-# Verify if its there is a Windows G-Drive files repo or a Linux G-Drive files repo
+# Verify if there is a Windows G-Drive files repo or a Linux G-Drive files repo
 if os.path.exists(files_repo):
     root = files_repo
 else:
@@ -46,15 +46,15 @@ df_combined['ID'] = [str(i) for i in range(1, len(df_combined) + 1)]
 ##           [G-Cloud directory]
 ## (keep this commented when is not used)
 #
-# print(f"> Saving on cloud directory")
-# output_file_root = f"{root}/output"
+print(f"> Saving on cloud directory")
+output_file_root = f"{root}/output"
 
 ##           [Local directory]
 ## (insert your local directory)
 ## (keep this commented when is not used)
 
-print(f"> Saving on local directory")
-output_file_root = f"C:/Users/microzonazione_05/Desktop/UGLC Dataset/UGLC_poly"
+# print(f"> Saving on local directory")
+# output_file_root = f"C:/Users/microzonazione_05/Desktop/UGLC Dataset/UGLC_poly"
 # ------------------------------------
 
 # Verify the csv files presence into the dir
@@ -71,7 +71,7 @@ if csv_files:
     min_lat, max_lat = -90, 90
 
     # Calculate tile dimension (8x8 grid)
-    lon_step = (max_lon - min_lon) / 8
+    lon_step = (max_lon - min_lon) / 16
     lat_step = (max_lat - min_lat) / 8
 
     # Convert the dataframe as GeoDataFrame
@@ -92,11 +92,17 @@ if csv_files:
             # Filters polygons that fall within tile boundaries
             tile_gdf = gdf.cx[tile_min_lon:tile_max_lon, tile_min_lat:tile_max_lat]
 
-            # Save the result as GeoPackage
-            output_file_gpkg = f"{output_file_root}/UGLC_poly_tile_{i}_{j}.gpkg"
-            tile_gdf.to_file(output_file_gpkg, driver='GPKG')
-            print(f"GeoDataFrame Tile ({i}, {j}) saved on '{output_file_gpkg}' as GeoPackage.")
+            # Check if the tile contains data
+            if not tile_gdf.empty:
+                # Save the result as GeoPackage
+                output_file_gpkg = f"{output_file_root}/UGLC_poly_tile_{i}_{j}.gpkg"
+                tile_gdf.to_file(output_file_gpkg, driver='GPKG')
+                print(f"GeoDataFrame Tile ({i}, {j}) saved on '{output_file_gpkg}' as GeoPackage.")
+            else:
+                print(f"GeoDataFrame Tile ({i}, {j}) was not saved because it's empty.")
 
 # ------------------------------------
 else:
-    print("No CSV file found in to the directory.")
+    print("No CSV file found in the directory.")
+
+
