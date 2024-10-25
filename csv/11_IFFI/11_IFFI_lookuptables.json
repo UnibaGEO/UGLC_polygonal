@@ -1,5 +1,5 @@
 {
-  "12_IFFI LOOKUP TABLES": {
+  "11_IFFI LOOKUP TABLES": {
     "nome_tipo_lookup": {
       "Scivolamento rotazionale/traslativo": "complex",
       "Colamento lento": "soil creep",

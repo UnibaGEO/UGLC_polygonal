@@ -27,7 +27,7 @@ print(f"Using root= {root}")
 df_list = []
 
 # Path to the folder containing the ZIP files
-zip_folder = f"{root}/input/download/12_IFFI/"
+zip_folder = f"{root}/input/download/11_IFFI/"
 
 # Iterate through all ZIP files matching the pattern
 for filename in os.listdir(zip_folder):
@@ -67,5 +67,5 @@ for filename in os.listdir(zip_folder):
 df_final = pd.concat(df_list, ignore_index=True)
 
 # Save the final DataFrame to a CSV file
-output_path = f"{root}/input/native_dataset/12_IFFI_native.csv"
+output_path = f"{root}/input/native_dataset/11_IFFI_native.csv"
 df_final.to_csv(output_path, index=False, sep=';', encoding="utf-8")

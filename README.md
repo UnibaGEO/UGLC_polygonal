@@ -86,8 +86,7 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
     | [08_JLD](https://zenodo.org/records/3775870)                                                                                                                                             | Japan landslide dataset for semantic segmentation                                  | 331         | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
     | [09_COOLR](https://maps.nccs.nasa.gov/arcgis/apps/MapAndAppGallery/index.html?appid=574f26408683485799d02e857e5d9521)                                                                    | Cooperative Open Online Landslide Repository - Report and Event Polygons (NASA)    | 20056       | [LICENSE](https://maps.nccs.nasa.gov/arcgis/apps/MapAndAppGallery/index.html?appid=574f26408683485799d02e857e5d9521)                      | free      | :heavy_check_mark:    |
     | [10_ETGFI](https://www.sciencebase.gov/catalog/item/583f4114e4b04fc80e3c4a1a)                                                                                                            | ETGFI - Earthquake Triggered Ground Failure Inventories (USGS)                     | 491840      | [LICENSE](https://www.sciencebase.gov/catalog/item/583f4114e4b04fc80e3c4a1a)                      | free      | :heavy_check_mark:    |
-    | [11_OR](https://www.arcgis.com/home/item.html?id=32b5eeccb4524413ad51606378a908c4)                                                                                                       | OR - Oregon Landslides inventory                                                   | 22154       | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
-    | [12_IFFI](https://idrogeo-isprambiente-it.translate.goog/app/page/open-data?_x_tr_sl=en&_x_tr_tl=it&_x_tr_hl=it&_x_tr_pto=sc&_x_tr_hist=true)                                                                                                     | IFFI - Inventario fenomeni franosi in Italia                                       | 423401      | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
+    | [11_IFFI](https://idrogeo-isprambiente-it.translate.goog/app/page/open-data?_x_tr_sl=en&_x_tr_tl=it&_x_tr_hl=it&_x_tr_pto=sc&_x_tr_hist=true)                                           | IFFI - Inventario fenomeni franosi in Italia                                       | 423401      | [LICENSE](https://creativecommons.org/licenses/by/4.0/legalcode)                      | free      | :heavy_check_mark:    |
 
 
 - <b> OLD ID: </b> the contents of this field represent the identifying id assigned to this row in the source dataset (if any)
@@ -256,8 +255,9 @@ dataframe.
 <img alt="Dataframe Folder Structure" src="files/UGLC_tile_grid_map.jpeg"/>
 <p align="center"><i> UGLC tile grid map </i></p>
 
-The polygonal catalog is also available in GeoPackage format, divided into 64 rectangular tiles covering the entire 
-earth surface, having a Tile_ID attribute necessary for their identification.
+The polygonal catalog is available in GeoPackage format, divided into 105 tiles that cover the entire Earth's surface.
+Each tile includes a Tile_ID attribute for unique identification within the grid. Empty tiles are automatically excluded from storage,
+ensuring optimized file management and performance.
 
 --------------------------------------------------------
 ## :red_circle: Requirements
