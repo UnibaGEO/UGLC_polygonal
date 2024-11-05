@@ -37,7 +37,8 @@
       "construction" : "human",
       "no_apparent_trigger" : "ND",
       "monsoon" : "rainfall",
-      "Rain" : "rainfall"
+      "Rain" : "rainfall",
+      "Unknown" : "ND"
     },
     "loc_acc_lookup" :{
       "1km": "1000",
