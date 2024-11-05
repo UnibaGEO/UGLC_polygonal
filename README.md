@@ -34,26 +34,26 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 
 ## :red_circle: Attribute fields summary
 
-| ATTRIBUTE    | TYPE            |
-|--------------|-----------------|
-| WKT_GEOM     | Well known text |
-| NEW DATASET  | String          |
-| ID           | Int             |
-| OLD DATASET  | String          |
-| OLD ID       | String          |
-| VERSION      | String          |
-| COUNTRY      | String          |
-| ACCURACY     | Int             |
-| START DATE   | Date            |
-| END DATE     | Date            |
-| TYPE         | String          |
-| TRIGGER      | String          |
-| RELIABILITY | Int             |
-| RECORD TYPE  | String          |
-| FATALITIES   | Int             |
-| INJURIES     | Int             |
-| NOTES        | String          |
-| LINK         | String          |
+| ATTRIBUTE     | TYPE            |
+|---------------|-----------------|
+| WKT_GEOM      | Well known text |
+| NEW DATASET   | String          |
+| ID            | Int             |
+| OLD DATASET   | String          |
+| OLD ID        | String          |
+| VERSION       | String          |
+| COUNTRY       | String          |
+| ACCURACY      | Int             |
+| START DATE    | Date            |
+| END DATE      | Date            |
+| TYPE          | String          |
+| TRIGGER       | String          |
+| RELIABILITY   | Int             |
+| RECORD TYPE   | String          |
+| FATALITIES    | Int             |
+| INJURIES      | Int             |
+| NOTES         | String          |
+| LINK          | String          |
 
 ----------------------------------------------------------------------------------------------------------------
 
