@@ -89,7 +89,7 @@ df_NEW['ACCURACY'] = df_OLD["confidence"]
 df_NEW['START DATE'] = df_OLD.apply(populate_start_date, axis=1)
 df_NEW['END DATE'] = df_OLD.apply(populate_end_date, axis=1)
 df_NEW['TYPE'] = df_OLD["d_name"]
-df_NEW['TRIGGER'] = "ND"
+df_NEW['PHYSICAL FACTORS'] = "ND"
 df_NEW['RELIABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = "report"
 df_NEW['FATALITIES'] = "-99999"
