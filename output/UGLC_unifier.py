@@ -36,8 +36,8 @@ for file in csv_files:
 
 ## ------------------ DATA CLEANING ------------------
 
-# Data Cleaning: removes records with 'TYPE' == "snow avalanche"
-df_combined = df_combined[df_combined['TYPE'] != "snow avalanche"]
+# Data Cleaning: removes records with 'TYPE' == "liquefaction"
+df_combined = df_combined[df_combined['TYPE'] != "liquefaction"]
 
 # Adding the general dataframe ID
 df_combined['ID'] = [str(i) for i in range(1, len(df_combined) + 1)]
