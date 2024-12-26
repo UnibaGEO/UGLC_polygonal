@@ -88,7 +88,7 @@ df_NEW['ACCURACY'] = "0"
 df_NEW['START DATE'] = pd.to_datetime(df_OLD['event_date'], errors='coerce').dt.strftime('%Y/%m/%d')
 df_NEW['END DATE'] = pd.to_datetime(df_OLD['event_date'], errors='coerce').dt.strftime('%Y/%m/%d')
 df_NEW['TYPE'] = df_OLD["TYPE"]
-df_NEW['TRIGGER'] = "seismic"
+df_NEW['PHYSICAL FACTORS'] = "seismic (T)"
 df_NEW['RELIABILITY'] = "CALC"
 df_NEW['RECORD TYPE'] = "event"
 df_NEW['FATALITIES'] = "-99999"

@@ -34,26 +34,26 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 
 ## :red_circle: Attribute fields summary
 
-| ATTRIBUTE     | TYPE            |
-|---------------|-----------------|
-| WKT_GEOM      | Well known text |
-| NEW DATASET   | String          |
-| ID            | Int             |
-| OLD DATASET   | String          |
-| OLD ID        | String          |
-| VERSION       | String          |
-| COUNTRY       | String          |
-| ACCURACY      | Int             |
-| START DATE    | Date            |
-| END DATE      | Date            |
-| TYPE          | String          |
-| TRIGGER       | String          |
-| RELIABILITY   | Int             |
-| RECORD TYPE   | String          |
-| FATALITIES    | Int             |
-| INJURIES      | Int             |
-| NOTES         | String          |
-| LINK          | String          |
+| ATTRIBUTE        | TYPE            |
+|------------------|-----------------|
+| WKT_GEOM         | Well known text |
+| NEW DATASET      | String          |
+| ID               | Int             |
+| OLD DATASET      | String          |
+| OLD ID           | String          |
+| VERSION          | String          |
+| COUNTRY          | String          |
+| ACCURACY         | Int             |
+| START DATE       | Date            |
+| END DATE         | Date            |
+| TYPE             | String          |
+| PHYSICAL FACTORS | String          |
+| RELIABILITY      | Int             |
+| RECORD TYPE      | String          |
+| FATALITIES       | Int             |
+| INJURIES         | Int             |
+| NOTES            | String          |
+| LINK             | String          |
 
 ----------------------------------------------------------------------------------------------------------------
 
@@ -135,28 +135,32 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
     | translational sliding        |
     | earth spreading              |
     | rock spreading               |
-    | glacial lake outburst floods |
     | mud flow                     |
     | sinkhole                     |
-    | liquefaction                 |
     | ND                           |
 
-
-- <b> TRIGGER: </b> the content of this field represents the trigger that triggered the landslide event (if explicit), standardized using this reference table:
+- <b>PHYSICAL FACTORS:</b> This field encompasses the physical factors contributing actively to the landslide event, categorized 
+into predisposing (PR), preparatory (P) and triggering (T) factors. Predisposing factors include invariant characteristics 
+such as geology, topography, and land use; preparatory factors refer to monitorable cyclical changes like seasonal variations 
+in saturation, weathering, or fire-induced alterations while triggering factors involve impulsive events such as 
+earthquakes, intense rainfall, or volcanic activity. 
+The category of Predisposing factors (PR) was not considered in our classification because it was absent in the native 
+data. Therefore, only the categories of Preparatory (P) and Triggering (T) factors were considered in the classification 
+of physical factors of landslides in this catalog.
+These categories are standardized using this reference table:
   
-    | TYPE OF TRIGGER                                | IDENTIFYING ABBREVIATION |
-    |------------------------------------------------|--------------------------|
-    | <i>(description)</i>                           | <i>(value)</i>           | 
-    | Rainfall trigger                               | rainfall                 | 
-    | Seismic trigger                                | seismic                  | 
-    | Volcanic trigger                               | volcanic                 |  
-    | Human-induced trigger                          | human                    | 
-    | Climate temperatures trigger                   | climate                  | 
-    | Postfire trigger                               | postfire                 |
-    | Deforestation processes                        | deforestation            |
-    | Erosional/gravitational and biological trigger | natural                  | 
-    | Unknown                                        | ND                       | 
-
+    | PHYSICAL FACTORS                        | IDENTIFYING ABBREVIATION |
+    |-----------------------------------------|--------------------------|
+    | <i>(description)</i>                    | <i>(value)</i>           | 
+    | Rainfall triggering factor              | rainfall (T)             | 
+    | Seismic triggering factor               | seismic (T)              | 
+    | Volcanic triggering factor              | volcanic (T)             |  
+    | Human-induced factors                   | anthropic (T,P)          | 
+    | Climatic factors                        | climate (T,P)            | 
+    | Post-fire conditions                    | postfire (P)             |
+    | Post-deforestation processes conditions | deforestation (P)        |
+    | Erosional and biological factors        | natural (T,P)            | 
+    | Unknown                                 | ND                       | 
 
 - <b> RELIABILITY: </b> the content of this field represents the reliability of the data based on a decision table that takes into 
     account spatial accuracy (ACCURACY) and temporal accuracy (START DATE, END DATE):
@@ -164,17 +168,16 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
     | SPATIAL RELIABILITY    | TEMPORAL RELIABILITY           | RELIABILITY DESCRIPTION          | CLASS          |
     |------------------------|--------------------------------|----------------------------------|----------------|
     | <i>(meters)</i>        | <i>(START DATE = END DATE)</i> | <i>(Description)</i>             | <i>(value)</i> |
-    | ( <100 m )             | TRUE                           | Exact point                      | 1              | 
-    | ( <100 m )             | FALSE                          | Almost exact point               | 2              |
-    | ( >100 m and <250 m )  | TRUE                           | Very high reliability point      | 3              | 
-    | ( >100 m and <250 m )  | FALSE                          | High reliability point           | 4              |  
-    | ( >250 m and <500 m )  | TRUE                           | Medium reliability point         | 5              |
-    | ( >250 m and <500 m )  | FALSE                          | Low reliability point            | 6              | 
-    | ( >500 m and <1000 m ) | TRUE                           | Very low reliability point       | 7              | 
-    | ( >500 m and <1000 m ) | FALSE                          | Poor reliability point           | 8              |
-    | ( >1000 m )            | TRUE and FALSE                 | Point with uncertain reliability | 9              | 
-    | ( -99999)              | TRUE and FALSE                 | Unreliable point                 | 10             | 
-
+    | ( <100 m )             | TRUE                           | Exact polygon                    | 1              | 
+    | ( <100 m )             | FALSE                          | Almost exact polygon               | 2              |
+    | ( >100 m and <250 m )  | TRUE                           | Very high reliability polygon      | 3              | 
+    | ( >100 m and <250 m )  | FALSE                          | High reliability polygon           | 4              |  
+    | ( >250 m and <500 m )  | TRUE                           | Medium reliability polygon         | 5              |
+    | ( >250 m and <500 m )  | FALSE                          | Low reliability polygon            | 6              | 
+    | ( >500 m and <1000 m ) | TRUE                           | Very low reliability polygon       | 7              | 
+    | ( >500 m and <1000 m ) | FALSE                          | Poor reliability polygon           | 8              |
+    | ( >1000 m )            | TRUE and FALSE                 | Polygon with uncertain reliability | 9              | 
+    | ( -99999)              | TRUE and FALSE                 | Unreliable polygon                 | 10             | 
 
 - <b> RECORD TYPE: </b>  The contents of this field contain information regarding the record type: <u>report</u>, 
     <u>event</u>.
