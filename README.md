@@ -38,11 +38,14 @@ Stay tuned for updates as we approach the release date.
 ----------------------------------------------------------------------------------------------------------------
 
 ## :red_circle: Data availability
-The catalogues data are available in these googledrive repositories, as full catalogue in .csv format and as a tile in .gpkg format ([see tiling scheme](https://github.com/UnibaGEO/UGLC_poly/blob/master/README.md#red_circle-tiling-system)).
+The catalogues data are available in these googledrive repositories, as full catalogue in .csv format and as a tile in .gpkg format ([see tiling scheme](https://github.com/UnibaGEO/UGLC/blob/master/README.md#red_circle-tiling-system)).
 They're distributed under the licence [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) 
 
-- UGLC Point Catalogue files:        [download :arrow_down:](https://drive.google.com/drive/folders/1Vj0yNB488g2bhAlrlug_8xoyZsgazn6t?usp=sharing)
-- UGLC Polygonal Catalogue files:    [download :arrow_down:](https://drive.google.com/drive/folders/1-0yvEdZmx0iwCRC8c-RowXHr8nmXtR9O?usp=sharing)
+
+| CATALOGUE TYPE                 | NUMBER OF RECORDS | FILES REPOSITORY                                                                                              |
+|--------------------------------|-------------------|---------------------------------------------------------------------------------------------------------------|
+| UGLC Point Catalogue files     | 1061450 points    | [download :arrow_down:](https://drive.google.com/drive/folders/1Vj0yNB488g2bhAlrlug_8xoyZsgazn6t?usp=sharing) |
+| UGLC Polygonal Catalogue files | 984126 polygons   | [download :arrow_down:](https://drive.google.com/drive/folders/1-0yvEdZmx0iwCRC8c-RowXHr8nmXtR9O?usp=sharing) |
 
 ![Licenza Dati: CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)
 
