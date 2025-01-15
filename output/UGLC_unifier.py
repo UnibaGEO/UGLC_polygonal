@@ -95,7 +95,7 @@ if csv_files:
             # Check if the tile contains data
             if not tile_gdf.empty:
                 # Save the result as GeoPackage
-                output_file_gpkg = f"{output_file_root}/UGLC_poly_tile_{i}_{j}.gpkg"
+                output_file_gpkg = f"{output_file_root}/UGLC_world_tiles/UGLC_poly_tile_{i}_{j}.gpkg"
                 tile_gdf.to_file(output_file_gpkg, driver='GPKG')
                 print(f"GeoDataFrame Tile ({i}, {j}) saved on '{output_file_gpkg}' as GeoPackage.")
             else:
