@@ -59,7 +59,7 @@ output_file_root = f"{root}/output"
 
 # Verify the csv files presence into the dir
 if csv_files:
-    output_file = f"{output_file_root}/UGLC_poly.csv"
+    output_file = f"{output_file_root}/UGLC_poly_full.csv"
     df_combined.to_csv(output_file, index=False, sep='|')
     print(f"UGLC Dataframe created on '{output_file}' path as CSV with '|' as separator.")
 
