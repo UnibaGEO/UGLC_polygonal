@@ -38,14 +38,16 @@ Stay tuned for updates as we approach the release date.
 ----------------------------------------------------------------------------------------------------------------
 
 ## :red_circle: Data availability
-The catalogues data are available in these googledrive repositories, as full catalogue in .csv format and as a tile in .gpkg format ([see tiling scheme](https://github.com/UnibaGEO/UGLC/blob/master/README.md#red_circle-tiling-system)).
+The catalogues data are available in these googledrive repositories, as full catalogue in .csv format (with '|' as separator) and as a tile in .gpkg format ([see tiling scheme](https://github.com/UnibaGEO/UGLC/blob/master/README.md#red_circle-tiling-system)).
 They're distributed under the licence [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) 
 
 
-| CATALOGUE TYPE                 | NUMBER OF RECORDS | FILES REPOSITORY                                                                                              |
-|--------------------------------|-------------------|---------------------------------------------------------------------------------------------------------------|
-| UGLC Point Catalogue files     | 1061450 points    | [download :arrow_down:](https://drive.google.com/drive/folders/1Vj0yNB488g2bhAlrlug_8xoyZsgazn6t?usp=sharing) |
-| UGLC Polygonal Catalogue files | 984126 polygons   | [download :arrow_down:](https://drive.google.com/drive/folders/1-0yvEdZmx0iwCRC8c-RowXHr8nmXtR9O?usp=sharing) |
+| CATALOGUE TYPE                 | NUMBER OF RECORDS | FILES REPOSITORY                                                                                                              |
+|--------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| UGLC Point Catalogue files     | 1061450 points    | [POINT CATALOGUE](https://github.com/UnibaGEO/UGLC_point)                                                                     |
+| UGLC Polygonal Catalogue files | 984126 polygons   | FULL CATALOGUE [download :arrow_down:](https://drive.google.com/file/d/1HbQL4qt0UmgC5jSmPIhIeOCkAojnVzYa/view?usp=sharing)    |
+|                                |                   | TILED CATALOGUE [download :arrow_down:](https://drive.google.com/drive/folders/1OGHdiTZA3E9pfDV20WQ_OT1OpbBxf3WT?usp=sharing) |
+
 
 ![Licenza Dati: CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)
 
@@ -261,7 +263,7 @@ The GSR contains 5 main folders :
 - /output
 
     This folder contains the unifier script ("unifier.py") that read all the converted datasets from the DFR 'output/converted_csv'
-    subfolder, then merge and filter them for generating the final UGLC dataframe ("UGLC_poly.csv") and the tiled verion ("UGLC_poly_tile_i_j.gpkg"),
+    subfolder, then merge and filter them for generating the final UGLC dataframe ("UGLC_poly_full.csv") and the tiled verion ("UGLC_poly_tile_i_j.gpkg"),
     saving everything into the DFR 'output' folder.
   
 - /lib
