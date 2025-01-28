@@ -11,6 +11,7 @@
 - [@Saverio Mancino](https://github.com/RavyHollow) - PhD Student (Dept. Geo-enviromental science - University of Bari).
 - [@Anna Sblano](https://github.com/Anita2333) - Research Fellow (Dept. Geo-enviromental science - University of Bari).
 - [@Francesco Paolo Lovergine](https://github.com/fpl) - Researcher (Institute for the Electromagnetic Survey of the Atmosphere - National Research Council of Italy).
+- Tushar Sethi - Director (Margosa Environmental Solutions Ltd)
 - [@Giuseppe Amatulli](https://github.com/selvaje) - PhD Researcher (School of the Environment - Yale University).
 - Domenico Capolongo - PhD Professor (Dept. Geo-enviromental science - University of Bari).
 
@@ -18,22 +19,15 @@
 
 ## :red_circle: Project description
 
-The main purpose of this project is to generate a single global-scale landslide dataset that collects and standardizes 
-within it all open source global, national, and sub-national landslide datasets, provided with spatial and temporal 
-accuracy details, along with several general information about each single record.
+The main purpose of this project is to generate a single global-scale landslide dataset that collects and standardizes within it all open source global, national, 
+and sub-national landslide datasets, provided with spatial and temporal accuracy details, along with several general information about each single record. 
+Researchers that are willing to contribute with additional landslide points and polygons can keep in touch with [@Saverio Mancino](https://github.com/RavyHollow). 
+The Unified Global Landslide Catalogue (UGLC) scientifcial and technical publication is under preparation and a will be submmited to ESSD Copernicus in early 2025.
 
 ----------------------------------------------------------------------------------------------------------------
 
 ## :red_circle: License
 The whole code is published under the [MIT License](files/LICENSE.txt).
-
-----------------------------------------------------------------------------------------------------------------
-
-## :red_circle: Publication Notice
-The catalogue, along with its associated analyses, methodologies, and results, is planned for publication by Spring 2025.\
-This release will include comprehensive documentation and datasets, making the information fully accessible to the 
-scientific community and the public.\
-Stay tuned for updates as we approach the release date.
 
 ----------------------------------------------------------------------------------------------------------------
 
