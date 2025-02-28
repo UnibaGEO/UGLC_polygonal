@@ -12,8 +12,8 @@
 - [@Anna Sblano](https://github.com/Anita2333) - Research Fellow (Dept. Geo-enviromental science - University of Bari).
 - [@Francesco Paolo Lovergine](https://github.com/fpl) - Researcher (Institute for the Electromagnetic Survey of the Atmosphere - National Research Council of Italy).
 - Tushar Sethi - Director (Margosa Environmental Solutions Ltd)
-- [@Giuseppe Amatulli](https://github.com/selvaje) - PhD Researcher (School of the Environment - Yale University).
 - Domenico Capolongo - PhD Professor (Dept. Geo-enviromental science - University of Bari).
+- [@Giuseppe Amatulli](https://github.com/selvaje) - PhD Researcher (School of the Environment - Yale University).
 
 ----------------------------------------------------------------------------------------------------------------
 
