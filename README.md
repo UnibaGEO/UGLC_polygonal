@@ -159,7 +159,7 @@ They're distributed under the licence [Creative Commons Attribution 4.0 Internat
 
 
 - <b>PHYSICAL FACTORS:</b> This field encompasses the physical factors contributing actively to the landslide activation, categorized 
-    into predisposing (PR), preparatory (P) and triggering (T) factors. Predisposing factors include invariant characteristics 
+    into preparatory (P) and triggering (T) factors. Predisposing factors include invariant characteristics 
     such as geology, topography, and land use; preparatory factors refer to monitorable cyclical changes like seasonal variations 
     in saturation, weathering, or fire-induced alterations while triggering factors involve impulsive events such as 
     earthquakes, intense rainfall, or volcanic activity. 
