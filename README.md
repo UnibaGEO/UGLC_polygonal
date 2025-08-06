@@ -33,7 +33,7 @@ The whole code is published under the [MIT License](files/LICENSE.txt).
 
 ## :red_circle: Data availability
 The catalogues data are available in these googledrive repositories, as full catalogue in .csv format (with '|' as separator) and as a tile in .gpkg format ([see tiling scheme](https://github.com/UnibaGEO/UGLC/blob/master/README.md#red_circle-tiling-system)).
-They're distributed under the licence [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) 
+They're distributed under the licence [Creative Commons Attribution 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/deed.en) 
 
 
 | CATALOGUE TYPE                 | NUMBER OF RECORDS | FILES REPOSITORY                                                                                                              |
